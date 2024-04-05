@@ -5,7 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 0
+    path: Assets/Scenes/PitchScenes/AirBalloon.unity
+    guid: 1a7f524c9de035e4ea512821ed661127
+  - enabled: 0
+    path: Assets/Scenes/PitchScenes/BigTree.unity
+    guid: 156a920a85a25b44ca570e77f9adda4e
+  - enabled: 0
+    path: Assets/Scenes/PitchScenes/Snow.unity
+    guid: 0569c103a6483af4f8b08912afe00fdb
+  - enabled: 0
+    path: Assets/Scenes/PitchScenes/Thorns.unity
+    guid: 1536954e1679917449068497fbfe98c5
+  - enabled: 1
+    path: Assets/Scenes/PitchScenes/WaterRuins.unity
+    guid: b47d17e04a5cc8044b29907db1deb0cc
   m_configObjects: {}
