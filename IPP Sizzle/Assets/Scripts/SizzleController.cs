@@ -17,14 +17,20 @@ public class SizzleController : MonoBehaviour
     [Header("Running")]
     [SerializeField] float moveSpeed;
 
+    [Header("Collision Checking")]
+    [SerializeField] float unpassCheckRadius;
+    [SerializeField] LayerMask unpassable;
+    [SerializeField] LayerMask ground;
+    [SerializeField] float groundCheckDistance;
+    [SerializeField] float groundCheckRadius;
+
     // Theses two variables range from -1 to 1 and
     // represent the current direction of movement 
-    public int forwAxis = 1;
-    public int sideAxis = 0;
+    private int forwAxis = 1;
+    private int sideAxis = 0;
 
-    [SerializeField] private TurnType turn;
+    private TurnType turn;
     private bool isTurning; // Whether a coroutine is active 
-    public bool turnLeft;  // Whether to rotate left or right 
 
     void Start()
     {
@@ -38,8 +44,6 @@ public class SizzleController : MonoBehaviour
 
     private void ProcessUserInput()
     {
-      
-
         int currForw;
         int currSide;
 
@@ -75,13 +79,40 @@ public class SizzleController : MonoBehaviour
 
         // Running code 
 
-        this.transform.position += new Vector3(-currForw, 0.0f, currSide).normalized * moveSpeed * Time.deltaTime;
+        Vector3 dir = new Vector3(-currForw, 0.0f, currSide).normalized;
+        Vector3 nextPos = this.transform.position + dir * moveSpeed * Time.deltaTime;
 
+        bool hasGround = Physics.CheckSphere(this.transform.position + dir, groundCheckRadius, ground);
+        /*foreach (Vector3 point in groundChecks)
+        {
+            if (!Physics.CheckSphere(this.transform.TransformPoint(point), groundCheckRadius, ground))
+            {
+                hasGround = false;
+                break;
+            }
+        }*/
+
+        if (hasGround && !Physics.CheckSphere(nextPos, unpassCheckRadius, unpassable))
+        {
+            this.transform.position = nextPos;
+        }
 
 
         if (isTurning)
             return;
 
+        OrientationLogic(currForw, currSide);
+
+        forwAxis = currForw; 
+        sideAxis = currSide;
+    }
+
+
+
+    #region Turning 
+
+    private void OrientationLogic(int currForw, int currSide)
+    {
         // Compare to previous input to see if there needs
         // to be rotation
 
@@ -104,19 +135,11 @@ public class SizzleController : MonoBehaviour
                 }
                 else
                 {
-                    int totalDiff = Math.Abs(forwDifference) + Math.Abs(sideDifference);
+                    int totalDiff = System.Math.Abs(forwDifference) + System.Math.Abs(sideDifference);
                     turn = (TurnType)totalDiff;
-
-                    // Whether to turn left or right 
-                    Vector2 curr = new Vector2(currForw, currSide);
-                    Vector2 prev = new Vector2(forwAxis, sideAxis);
-
-                    turnLeft = Vector2.Dot(prev, curr) >= 0.0f;
-
-                    print(Vector2.Dot(prev, curr));
                 }
 
-            AdjustOrientation(new Vector3(currSide, 0.0f, currForw));
+                AdjustOrientation(new Vector3(currSide, 0.0f, currForw));
 
             }
         }
@@ -125,9 +148,6 @@ public class SizzleController : MonoBehaviour
             // Don't turn 
             turn = TurnType.NONE;
         }
-
-        forwAxis = currForw; 
-        sideAxis = currSide;
     }
 
     private void AdjustOrientation(Vector3 target)
@@ -143,7 +163,7 @@ public class SizzleController : MonoBehaviour
     {
         float timer = 0.0f;
 
-        while(timer <= turnTime)
+        while (timer <= turnTime)
         {
             this.transform.forward = Vector3.Slerp(origin, target, timer / turnTime);
 
@@ -154,47 +174,6 @@ public class SizzleController : MonoBehaviour
         this.transform.forward = target;
         isTurning = false;
     }
-
-    private void AdjustOrientation()
-    {
-        switch (turn)
-        {
-            case TurnType.NONE: // Do nothing 
-                break;
-            case TurnType.SMALL_STEP:
-                isTurning = true;
-                StartCoroutine(RotateToAngle(this.transform.eulerAngles, this.transform.eulerAngles + Vector3.up * (turnLeft ? 45.0f : -45.0f)));
-                break;
-            case TurnType.BIG_STEP:
-                //isTurning = true;
-                break;
-            case TurnType.SMALL_JUMP:
-                //isTurning = true;
-                break;
-            case TurnType.BIG_JUMP:
-                //isTurning = true;
-                break;
-        }
-    }
-
-    private IEnumerator RotateToAngle(Vector3 origin, Vector3 target)
-    {
-        float timer = 0.0f; 
-        while(timer <= turnTime)
-        {
-            this.transform.eulerAngles = Vector3.Slerp(origin, target, timer / turnTime);
-
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        this.transform.eulerAngles = target;
-        isTurning = false;
-    }
-
-    #region Turning 
-
-
 
     /// <summary>
     /// These are the different kinds of turns Sizzle can take
@@ -210,4 +189,14 @@ public class SizzleController : MonoBehaviour
     }
 
     #endregion
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(this.transform.position, unpassCheckRadius);
+        Gizmos.DrawWireSphere(this.transform.position + new Vector3(-forwAxis, 0.0f, sideAxis).normalized * groundCheckDistance, groundCheckRadius);
+
+        Gizmos.matrix = this.transform.localToWorldMatrix;
+        Gizmos.DrawSphere(new Vector3(0, 0, 0), 0.1f);
+    }
+
 }

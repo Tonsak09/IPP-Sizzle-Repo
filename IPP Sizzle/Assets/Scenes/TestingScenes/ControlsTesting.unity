@@ -2389,7 +2389,7 @@ GameObject:
   - component: {fileID: 944122792}
   - component: {fileID: 944122791}
   - component: {fileID: 944122790}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3959,16 +3959,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc0dccf169749245a9bfcba7dddac32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: 119
-  backward: 115
-  right: 100
-  left: 97
+  forward: 100
+  backward: 97
+  right: 115
+  left: 119
   turnTime: 0.1
   moveSpeed: 3
-  forwAxis: 0
-  sideAxis: 0
-  turn: 0
-  turnLeft: 0
+  unpassCheckRadius: 1
+  unpassable:
+    serializedVersion: 2
+    m_Bits: 64
+  ground:
+    serializedVersion: 2
+    m_Bits: 128
+  groundCheckDistance: 1
+  groundCheckRadius: 0.1
 --- !u!4 &1563574406
 Transform:
   m_ObjectHideFlags: 0
@@ -3977,7 +3982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563574404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3996,7 +4001,8 @@ GameObject:
   - component: {fileID: 1574227189}
   - component: {fileID: 1574227191}
   - component: {fileID: 1574227190}
-  m_Layer: 0
+  - component: {fileID: 1574227192}
+  m_Layer: 6
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4067,6 +4073,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574227188}
+  m_Mesh: {fileID: -8803937527578110353, guid: b17addf8bdff74d4c9a61eea42a7a4ad, type: 3}
+--- !u!64 &1574227192
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574227188}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -8803937527578110353, guid: b17addf8bdff74d4c9a61eea42a7a4ad, type: 3}
 --- !u!1 &1650723626
 GameObject:
@@ -5024,7 +5052,8 @@ GameObject:
   - component: {fileID: 2086810784}
   - component: {fileID: 2086810786}
   - component: {fileID: 2086810785}
-  m_Layer: 0
+  - component: {fileID: 2086810787}
+  m_Layer: 6
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5095,6 +5124,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086810783}
+  m_Mesh: {fileID: -8803937527578110353, guid: b17addf8bdff74d4c9a61eea42a7a4ad, type: 3}
+--- !u!64 &2086810787
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086810783}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: -8803937527578110353, guid: b17addf8bdff74d4c9a61eea42a7a4ad, type: 3}
 --- !u!4 &15343560263650314
 Transform:
@@ -5181,7 +5232,7 @@ GameObject:
   - component: {fileID: 5734767925251044376}
   - component: {fileID: 2771963508670010797}
   - component: {fileID: 1392135861350912045}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Thorn.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5551,7 +5602,7 @@ GameObject:
   - component: {fileID: 3475938153268546008}
   - component: {fileID: 2918640665587433758}
   - component: {fileID: 48235389132772230}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Thorn.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5675,7 +5726,7 @@ GameObject:
   - component: {fileID: 927029776968312975}
   - component: {fileID: 6541526615022595733}
   - component: {fileID: 4328684804418752349}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Thorn.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6035,7 +6086,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7312597129365652589}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6400,7 +6451,7 @@ GameObject:
   - component: {fileID: 2924803768595109228}
   - component: {fileID: 6762815684691574207}
   - component: {fileID: 3514896224177384157}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Thorn.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6489,7 +6540,9 @@ GameObject:
   - component: {fileID: 1425519514360569288}
   - component: {fileID: 7238370867249269873}
   - component: {fileID: 4590424311948374340}
-  m_Layer: 0
+  - component: {fileID: 7238370867249269874}
+  - component: {fileID: 7238370867249269875}
+  m_Layer: 6
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8096,7 +8149,7 @@ GameObject:
   - component: {fileID: 8181945678419335637}
   - component: {fileID: 494442598296782552}
   - component: {fileID: 6635308392249118109}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Thorn.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8578,7 +8631,7 @@ GameObject:
   - component: {fileID: 6917451434142672535}
   - component: {fileID: 1714124195543034966}
   - component: {fileID: 6921143173975492487}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Thorn.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8612,7 +8665,7 @@ GameObject:
   - component: {fileID: 292059985211511591}
   - component: {fileID: 7843669527582400131}
   - component: {fileID: 1537893979572897354}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Thorn.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8735,7 +8788,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7312597129365652589}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2fe8d76518915a44bf2fda16b54cb22, type: 3}
   m_Name: 
@@ -8926,7 +8979,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6656433713220067430}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ThornVine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9356,7 +9409,7 @@ GameObject:
   - component: {fileID: 1965131307380309074}
   - component: {fileID: 8886786589094207909}
   - component: {fileID: 2590759964171909706}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Thorn.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9859,6 +9912,55 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2412576749853298578}
   m_Mesh: {fileID: -8803937527578110353, guid: b17addf8bdff74d4c9a61eea42a7a4ad, type: 3}
+--- !u!64 &7238370867249269874
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412576749853298578}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8803937527578110353, guid: b17addf8bdff74d4c9a61eea42a7a4ad, type: 3}
+--- !u!54 &7238370867249269875
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412576749853298578}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!137 &7268267916105163352
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -10040,7 +10142,7 @@ GameObject:
   - component: {fileID: 5492891420862080720}
   - component: {fileID: 1646056412327367986}
   - component: {fileID: 5068275752475232661}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Thorn.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10239,7 +10341,7 @@ GameObject:
   - component: {fileID: 6153975199468075568}
   - component: {fileID: 2311103316839526020}
   - component: {fileID: 6295810168673398191}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Thorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10281,7 +10383,7 @@ GameObject:
   - component: {fileID: 6167382117020014647}
   - component: {fileID: 5024188631071230517}
   - component: {fileID: 6498010288959014179}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Thorn.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}

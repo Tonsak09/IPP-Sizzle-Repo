@@ -17,8 +17,8 @@ public class LoopEuler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rotA = this.transform.eulerAngles + offsetA;
-        rotB = this.transform.eulerAngles + offsetB;
+        rotA = this.transform.localEulerAngles + offsetA;
+        rotB = this.transform.localEulerAngles + offsetB;
     }
 
     // Update is called once per frame
@@ -26,11 +26,11 @@ public class LoopEuler : MonoBehaviour
     {
         if (aToB)
         {
-            this.transform.eulerAngles = Vector3.Slerp(rotA, rotB, rotCurve.Evaluate(rotLerp));
+            this.transform.localEulerAngles = Vector3.Slerp(rotA, rotB, rotCurve.Evaluate(rotLerp));
         }
         else
         {
-            this.transform.eulerAngles = Vector3.Slerp(rotB, rotA, rotCurve.Evaluate(rotLerp));
+            this.transform.localEulerAngles = Vector3.Slerp(rotB, rotA, rotCurve.Evaluate(rotLerp));
         }
 
         rotLerp += Time.deltaTime * rotSpeed;
