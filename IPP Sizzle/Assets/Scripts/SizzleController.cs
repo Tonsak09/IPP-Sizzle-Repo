@@ -12,7 +12,10 @@ public class SizzleController : MonoBehaviour
     [SerializeField] KeyCode left;
 
     [Header("Turning")]
-    [SerializeField] float turnTime; 
+    [SerializeField] float turnTime;
+
+    [Header("Running")]
+    [SerializeField] float moveSpeed;
 
     // Theses two variables range from -1 to 1 and
     // represent the current direction of movement 
@@ -31,11 +34,12 @@ public class SizzleController : MonoBehaviour
     void Update()
     {
         ProcessUserInput();
-        //AdjustOrientation();
     }
 
     private void ProcessUserInput()
     {
+      
+
         int currForw;
         int currSide;
 
@@ -71,45 +75,50 @@ public class SizzleController : MonoBehaviour
 
         // Running code 
 
+        this.transform.position += new Vector3(-currForw, 0.0f, currSide).normalized * moveSpeed * Time.deltaTime;
 
-        
+
+
+        if (isTurning)
+            return;
 
         // Compare to previous input to see if there needs
         // to be rotation
 
         if (currForw != forwAxis || currSide != sideAxis)
         {
-            if (isTurning)
-                return;
-
-            // Does not match with previous input 
-
-            // Differences in how much we need to turn range 
-            // from 1 to 4 as a difference 
-
-            int forwDifference = currForw - forwAxis;
-            int sideDifference = currSide - sideAxis;
-
-            if(currForw == -forwAxis && currSide == -sideAxis)
+            if (!isTurning)
             {
-                // Flipped direction 
-                turn = TurnType.BIG_JUMP;
+                // Does not match with previous input 
+
+                // Differences in how much we need to turn range 
+                // from 1 to 4 as a difference 
+
+                int forwDifference = currForw - forwAxis;
+                int sideDifference = currSide - sideAxis;
+
+                if (currForw == -forwAxis && currSide == -sideAxis)
+                {
+                    // Flipped direction 
+                    turn = TurnType.BIG_JUMP;
+                }
+                else
+                {
+                    int totalDiff = Math.Abs(forwDifference) + Math.Abs(sideDifference);
+                    turn = (TurnType)totalDiff;
+
+                    // Whether to turn left or right 
+                    Vector2 curr = new Vector2(currForw, currSide);
+                    Vector2 prev = new Vector2(forwAxis, sideAxis);
+
+                    turnLeft = Vector2.Dot(prev, curr) >= 0.0f;
+
+                    print(Vector2.Dot(prev, curr));
+                }
+
+            AdjustOrientation(new Vector3(currSide, 0.0f, currForw));
+
             }
-            else
-            {
-                int totalDiff = Math.Abs(forwDifference) + Math.Abs(sideDifference);
-                turn = (TurnType)totalDiff;
-
-                // Whether to turn left or right 
-                Vector2 curr = new Vector2(currForw, currSide);
-                Vector2 prev = new Vector2(forwAxis, sideAxis);
-
-                turnLeft = Vector2.Dot(curr, prev) >= 0.0f;
-                AdjustOrientation();
-
-                print(Vector2.Dot(curr, prev));
-            }
-
         }
         else
         {
@@ -119,6 +128,31 @@ public class SizzleController : MonoBehaviour
 
         forwAxis = currForw; 
         sideAxis = currSide;
+    }
+
+    private void AdjustOrientation(Vector3 target)
+    {
+        if (isTurning)
+            return;
+
+        isTurning = true;
+        StartCoroutine(RotateToOrientation(this.transform.forward, target));
+    }
+
+    private IEnumerator RotateToOrientation(Vector3 origin, Vector3 target)
+    {
+        float timer = 0.0f;
+
+        while(timer <= turnTime)
+        {
+            this.transform.forward = Vector3.Slerp(origin, target, timer / turnTime);
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        this.transform.forward = target;
+        isTurning = false;
     }
 
     private void AdjustOrientation()

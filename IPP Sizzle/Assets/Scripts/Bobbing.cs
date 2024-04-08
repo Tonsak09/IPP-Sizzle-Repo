@@ -19,8 +19,8 @@ public class Bobbing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        posA = this.transform.position + offsetA;
-        posB = this.transform.position + offsetB;
+        posA = this.transform.localPosition + offsetA;
+        posB = this.transform.localPosition + offsetB;
     }
 
     // Update is called once per frame
@@ -28,11 +28,11 @@ public class Bobbing : MonoBehaviour
     {
         if(aToB)
         {
-            this.transform.position = Vector3.Lerp(posA, posB, posCurve.Evaluate(posLerp));
+            this.transform.localPosition = Vector3.Lerp(posA, posB, posCurve.Evaluate(posLerp));
         }
         else
         {
-            this.transform.position = Vector3.Lerp(posB, posA, posCurve.Evaluate(posLerp));
+            this.transform.localPosition = Vector3.Lerp(posB, posA, posCurve.Evaluate(posLerp));
         }
         
         posLerp += Time.deltaTime * posSpeed;
