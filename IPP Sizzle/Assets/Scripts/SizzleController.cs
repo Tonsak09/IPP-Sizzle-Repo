@@ -10,12 +10,18 @@ public class SizzleController : MonoBehaviour
     [SerializeField] KeyCode backward;
     [SerializeField] KeyCode right;
     [SerializeField] KeyCode left;
-
+    [SerializeField] KeyCode dash;
+ 
     [Header("Turning")]
     [SerializeField] float turnTime;
 
     [Header("Running")]
     [SerializeField] float moveSpeed;
+
+    [Header("Dashing")]
+    [SerializeField] float dashTime;
+    [SerializeField] float dashSpeed;
+    [SerializeField] AnimationCurve dashCurve;
 
     [Header("Collision Checking")]
     [SerializeField] float unpassBodyCheckRadius; // Used to see if the body can fully fit in an area 
@@ -34,7 +40,10 @@ public class SizzleController : MonoBehaviour
     private int sideAxis = 0;
 
     private TurnType turn;
-    private bool isTurning; // Whether a coroutine is active 
+    private bool isTurning; // Whether a turn coroutine is active 
+    private bool isDashing; // Whether a dash coroutine is active 
+
+    private bool isAirborne; 
 
     void Start()
     {
@@ -48,13 +57,20 @@ public class SizzleController : MonoBehaviour
 
     private void ProcessUserInput()
     {
+
+        DashLogic();
+
+        // Can't do anything else until dash is finished 
+        if (isDashing)
+            return;
+
         int currForw;
         int currSide;
 
         bool isForward = Input.GetKey(forward);
         bool isBackward = Input.GetKey(backward);
 
-        if(isForward == isBackward)
+        if (isForward == isBackward)
         {
             // Cancel each other out 
             currForw = 0;
@@ -93,29 +109,42 @@ public class SizzleController : MonoBehaviour
             return;
         }
 
-        bool hasGround = Physics.CheckSphere(this.transform.position + dir * groundCheckDistance, groundCheckRadius, ground);
-        bool noUnpassable = 
-            !Physics.CheckSphere(nextPos + dir * unpassBodyCheckOffsetA, unpassBodyCheckRadius, unpassable) && 
-            !Physics.CheckSphere(nextPos + dir * unpassBodyCheckOffsetB, unpassBodyCheckRadius, unpassable);
-
-
-        if (hasGround && noUnpassable)
-        {
-            this.transform.position = nextPos;
-        }
-
-
+        TryMove(dir, nextPos);
 
         if (isTurning)
             return;
 
         OrientationLogic(currForw, currSide);
 
-        forwAxis = currForw; 
+        forwAxis = currForw;
         sideAxis = currSide;
     }
 
+    #region Running
 
+    /// <summary>
+    /// Logic to check if a desiered position can be set to 
+    /// </summary>
+    /// <param name="dir">Direction of movement</param>
+    /// <param name="nextPos">Next desired position</param>
+    private bool TryMove(Vector3 dir, Vector3 nextPos)
+    {
+        bool hasGround = Physics.CheckSphere(this.transform.position + dir * groundCheckDistance, groundCheckRadius, ground);
+        bool noUnpassable =
+            !Physics.CheckSphere(nextPos + dir * unpassBodyCheckOffsetA, unpassBodyCheckRadius, unpassable) &&
+            !Physics.CheckSphere(nextPos + dir * unpassBodyCheckOffsetB, unpassBodyCheckRadius, unpassable);
+
+
+        if (hasGround && noUnpassable)
+        {
+            this.transform.position = nextPos;
+            return true; 
+        }
+
+        return false;
+    }
+
+    #endregion
 
     #region Turning 
 
@@ -128,18 +157,11 @@ public class SizzleController : MonoBehaviour
         {
             if (!isTurning)
             {
-                
-
-
-
                 // Note: Differences in how much we need to turn range 
                 //       from 1 to 4 as a difference 
 
                 int forwDifference = currForw - forwAxis;
                 int sideDifference = currSide - sideAxis;
-
-                
-
 
                 if (currForw == -forwAxis && currSide == -sideAxis)
                 {
@@ -148,6 +170,7 @@ public class SizzleController : MonoBehaviour
                 }
                 else
                 {
+                    // Figure how much of a turn based on following equation 
                     int totalDiff = System.Math.Abs(forwDifference) + System.Math.Abs(sideDifference);
                     turn = (TurnType)totalDiff;
                 }
@@ -169,10 +192,10 @@ public class SizzleController : MonoBehaviour
             return;
 
         isTurning = true;
-        StartCoroutine(RotateToOrientation(this.transform.forward, target));
+        StartCoroutine(RotateToOrientationCo(this.transform.forward, target));
     }
 
-    private IEnumerator RotateToOrientation(Vector3 origin, Vector3 target)
+    private IEnumerator RotateToOrientationCo(Vector3 origin, Vector3 target)
     {
         float timer = 0.0f;
 
@@ -199,6 +222,42 @@ public class SizzleController : MonoBehaviour
         BIG_STEP = 2,
         SMALL_JUMP = 3,
         BIG_JUMP = 4
+    }
+
+    #endregion
+
+    #region Dashing
+
+    private void DashLogic()
+    {
+        if (isDashing)
+            return;
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            isDashing = true;
+            StartCoroutine(DashCo());
+        }
+    }
+
+    private IEnumerator DashCo()
+    {
+        Vector3 dir = new Vector3(-forwAxis, 0.0f, sideAxis).normalized;
+
+        float timer = 0.0f;
+        while(timer <= dashTime)
+        {
+            float scale = dashSpeed * dashCurve.Evaluate(timer / dashTime) * Time.deltaTime;
+            if(!TryMove(dir, this.transform.position + dir * scale))
+            {
+                break;
+            }
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        isDashing = false;
     }
 
     #endregion
