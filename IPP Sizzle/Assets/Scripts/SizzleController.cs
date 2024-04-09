@@ -18,7 +18,11 @@ public class SizzleController : MonoBehaviour
     [SerializeField] float moveSpeed;
 
     [Header("Collision Checking")]
-    [SerializeField] float unpassCheckRadius;
+    [SerializeField] float unpassBodyCheckRadius; // Used to see if the body can fully fit in an area 
+    [SerializeField] float unpassBodyCheckOffsetA;
+    [SerializeField] float unpassBodyCheckOffsetB;
+    [SerializeField] float unpassTurnCheckDistance; // Use when checking ahead if there is an unpassable 
+    [SerializeField] float unpassTurnCheckRadius;
     [SerializeField] LayerMask unpassable;
     [SerializeField] LayerMask ground;
     [SerializeField] float groundCheckDistance;
@@ -82,20 +86,24 @@ public class SizzleController : MonoBehaviour
         Vector3 dir = new Vector3(-currForw, 0.0f, currSide).normalized;
         Vector3 nextPos = this.transform.position + dir * moveSpeed * Time.deltaTime;
 
-        bool hasGround = Physics.CheckSphere(this.transform.position + dir, groundCheckRadius, ground);
-        /*foreach (Vector3 point in groundChecks)
-        {
-            if (!Physics.CheckSphere(this.transform.TransformPoint(point), groundCheckRadius, ground))
-            {
-                hasGround = false;
-                break;
-            }
-        }*/
 
-        if (hasGround && !Physics.CheckSphere(nextPos, unpassCheckRadius, unpassable))
+        // Check if area to turn has unpassables if to turn 
+        if (Physics.CheckSphere(this.transform.position + dir * unpassTurnCheckDistance, unpassTurnCheckRadius, unpassable))
+        {
+            return;
+        }
+
+        bool hasGround = Physics.CheckSphere(this.transform.position + dir * groundCheckDistance, groundCheckRadius, ground);
+        bool noUnpassable = 
+            !Physics.CheckSphere(nextPos + dir * unpassBodyCheckOffsetA, unpassBodyCheckRadius, unpassable) && 
+            !Physics.CheckSphere(nextPos + dir * unpassBodyCheckOffsetB, unpassBodyCheckRadius, unpassable);
+
+
+        if (hasGround && noUnpassable)
         {
             this.transform.position = nextPos;
         }
+
 
 
         if (isTurning)
@@ -120,13 +128,18 @@ public class SizzleController : MonoBehaviour
         {
             if (!isTurning)
             {
-                // Does not match with previous input 
+                
 
-                // Differences in how much we need to turn range 
-                // from 1 to 4 as a difference 
+
+
+                // Note: Differences in how much we need to turn range 
+                //       from 1 to 4 as a difference 
 
                 int forwDifference = currForw - forwAxis;
                 int sideDifference = currSide - sideAxis;
+
+                
+
 
                 if (currForw == -forwAxis && currSide == -sideAxis)
                 {
@@ -192,9 +205,16 @@ public class SizzleController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(this.transform.position, unpassCheckRadius);
-        Gizmos.DrawWireSphere(this.transform.position + new Vector3(-forwAxis, 0.0f, sideAxis).normalized * groundCheckDistance, groundCheckRadius);
+        Vector3 dir = new Vector3(-forwAxis, 0.0f, sideAxis).normalized;
 
+        Gizmos.DrawWireSphere(this.transform.position + dir * unpassBodyCheckOffsetA, unpassBodyCheckRadius);
+        Gizmos.DrawWireSphere(this.transform.position + dir * unpassBodyCheckOffsetB, unpassBodyCheckRadius);
+
+        Gizmos.DrawWireSphere(this.transform.position + dir * groundCheckDistance, groundCheckRadius);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(this.transform.position + dir * unpassTurnCheckDistance, unpassTurnCheckRadius);
+
+        Gizmos.color = Color.white;
         Gizmos.matrix = this.transform.localToWorldMatrix;
         Gizmos.DrawSphere(new Vector3(0, 0, 0), 0.1f);
     }
