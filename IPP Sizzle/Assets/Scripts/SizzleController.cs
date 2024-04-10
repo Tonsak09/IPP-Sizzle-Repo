@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SizzleController : MonoBehaviour
@@ -11,7 +12,9 @@ public class SizzleController : MonoBehaviour
     [SerializeField] KeyCode right;
     [SerializeField] KeyCode left;
     [SerializeField] KeyCode dash;
+    [SerializeField] MouseButton spark;
  
+
     [Header("Turning")]
     [SerializeField] float turnTime;
 
@@ -63,6 +66,7 @@ public class SizzleController : MonoBehaviour
         if (isAirborne)
             return;
 
+        SparkLogic();
         ProcessUserInput();
     }
 
@@ -273,6 +277,19 @@ public class SizzleController : MonoBehaviour
 
     #endregion
 
+    #region Sparks
+
+    private void SparkLogic()
+    {
+        if(Input.GetMouseButtonDown((int)spark))
+        {
+            GameObject emitter = Instantiate(sparkEmitter, this.transform.TransformPoint(emitterOffset), this.transform.rotation);
+            emitter.transform.forward = new Vector3(-forwAxis, 0.0f, sideAxis).normalized;
+        }
+    }
+
+    #endregion
+
     private void OnDrawGizmos()
     {
         Vector3 dir = new Vector3(-forwAxis, 0.0f, sideAxis).normalized;
@@ -284,9 +301,14 @@ public class SizzleController : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(this.transform.position + dir * unpassTurnCheckDistance, unpassTurnCheckRadius);
 
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(this.transform.TransformPoint(emitterOffset), 0.05f);
+
         Gizmos.color = Color.white;
         Gizmos.matrix = this.transform.localToWorldMatrix;
         Gizmos.DrawSphere(new Vector3(0, 0, 0), 0.1f);
+
+        
     }
 
 }
