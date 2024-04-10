@@ -23,6 +23,14 @@ public class SizzleController : MonoBehaviour
     [SerializeField] float dashSpeed;
     [SerializeField] AnimationCurve dashCurve;
 
+    [Header("Falling")]
+    [SerializeField] float fallMaxSpeed;
+    [SerializeField] AnimationCurve fallCurve;
+
+    [Header("Sparks")]
+    [SerializeField] GameObject sparkEmitter;
+    [SerializeField] Vector3 emitterOffset; // TODO: Attach to head bone but face same direction always 
+
     [Header("Collision Checking")]
     [SerializeField] float unpassBodyCheckRadius; // Used to see if the body can fully fit in an area 
     [SerializeField] float unpassBodyCheckOffsetA;
@@ -39,7 +47,7 @@ public class SizzleController : MonoBehaviour
     private int forwAxis = 1;
     private int sideAxis = 0;
 
-    private TurnType turn;
+    private TurnType turn; // Used for animation manager
     private bool isTurning; // Whether a turn coroutine is active 
     private bool isDashing; // Whether a dash coroutine is active 
 
@@ -52,6 +60,9 @@ public class SizzleController : MonoBehaviour
 
     void Update()
     {
+        if (isAirborne)
+            return;
+
         ProcessUserInput();
     }
 
