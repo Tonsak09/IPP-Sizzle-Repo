@@ -290,7 +290,7 @@ public class SizzleController : MonoBehaviour
 
     #endregion
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Vector3 dir = new Vector3(-forwAxis, 0.0f, sideAxis).normalized;
 
@@ -307,8 +307,6 @@ public class SizzleController : MonoBehaviour
         Gizmos.color = Color.white;
         Gizmos.matrix = this.transform.localToWorldMatrix;
         Gizmos.DrawSphere(new Vector3(0, 0, 0), 0.1f);
-
-        
     }
 
 }
