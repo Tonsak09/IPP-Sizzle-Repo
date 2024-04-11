@@ -3233,7 +3233,7 @@ GameObject:
   - component: {fileID: 952681360}
   - component: {fileID: 952681359}
   - component: {fileID: 952681358}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3319,8 +3319,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952681357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.875, y: -0.9999999, z: 0.9999995}
-  m_LocalScale: {x: 8, y: 1, z: 8}
+  m_LocalPosition: {x: 1, y: -1, z: 2.8749979}
+  m_LocalScale: {x: 7.74975, y: 1, z: 11.7504}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4697,10 +4697,30 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  fallMaxSpeed: 0
-  fallCurve:
+  fallStartSpeed: 0.1
+  fallMaxSpeed: 1
+  timeToReachMaxFallSpeed: 1
+  fallSpeedCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4

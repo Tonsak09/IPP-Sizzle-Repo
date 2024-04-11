@@ -27,8 +27,11 @@ public class SizzleController : MonoBehaviour
     [SerializeField] AnimationCurve dashCurve;
 
     [Header("Falling")]
+    [SerializeField] float fallStartSpeed;
     [SerializeField] float fallMaxSpeed;
-    [SerializeField] AnimationCurve fallCurve;
+    [SerializeField] float timeToReachMaxFallSpeed;
+    [SerializeField] AnimationCurve fallSpeedCurve;
+    [SerializeField] float maxFallDis;
 
     [Header("Sparks")]
     [SerializeField] GameObject sparkEmitter;
@@ -142,9 +145,9 @@ public class SizzleController : MonoBehaviour
     /// </summary>
     /// <param name="dir">Direction of movement</param>
     /// <param name="nextPos">Next desired position</param>
-    private bool TryMove(Vector3 dir, Vector3 nextPos)
+    private bool TryMove(Vector3 dir, Vector3 nextPos, bool ignoreGround = false)
     {
-        bool hasGround = Physics.CheckSphere(this.transform.position + dir * groundCheckDistance, groundCheckRadius, ground);
+        bool hasGround = ignoreGround ? true : Physics.CheckSphere(this.transform.position + dir * groundCheckDistance, groundCheckRadius, ground);
         bool noUnpassable =
             !Physics.CheckSphere(nextPos + dir * unpassBodyCheckOffsetA, unpassBodyCheckRadius, unpassable) &&
             !Physics.CheckSphere(nextPos + dir * unpassBodyCheckOffsetB, unpassBodyCheckRadius, unpassable);
@@ -241,7 +244,7 @@ public class SizzleController : MonoBehaviour
 
     #endregion
 
-    #region Dashing
+    #region Dashing&Falling
 
     private void DashLogic()
     {
@@ -255,6 +258,12 @@ public class SizzleController : MonoBehaviour
         }
     }
 
+    private void UpdateIsAirborne()
+    {
+        // Creates a small check at pivot 
+        isAirborne = !Physics.CheckSphere(this.transform.position, groundCheckRadius, ground);
+    }
+
     private IEnumerator DashCo()
     {
         Vector3 dir = new Vector3(-forwAxis, 0.0f, sideAxis).normalized;
@@ -263,7 +272,7 @@ public class SizzleController : MonoBehaviour
         while(timer <= dashTime)
         {
             float scale = dashSpeed * dashCurve.Evaluate(timer / dashTime) * Time.deltaTime;
-            if(!TryMove(dir, this.transform.position + dir * scale))
+            if(!TryMove(dir, this.transform.position + dir * scale, true))
             {
                 break;
             }
@@ -272,8 +281,41 @@ public class SizzleController : MonoBehaviour
             yield return null;
         }
 
+        // Begin to fall if in air 
+        UpdateIsAirborne();
+
+        if(isAirborne)
+        {
+            StartCoroutine(FallCo());
+        }
+
         isDashing = false;
     }
+
+    private IEnumerator FallCo()
+    {
+        RaycastHit hit;
+        /*if(Physics.Raycast(this.transform.position, Vector3.down, out hit, spawnDistance, spawnableSurface))
+        {
+
+        }*/
+
+        float timer = 0.0f;
+        while(true)
+        {
+            float speed = Mathf.Lerp(fallStartSpeed, fallMaxSpeed, timer / timeToReachMaxFallSpeed) * Time.deltaTime;
+
+            if (!TryMove(Vector3.down, this.transform.position + Vector3.down * speed))
+                break;
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        UpdateIsAirborne();
+    }
+
+   
 
     #endregion
 
