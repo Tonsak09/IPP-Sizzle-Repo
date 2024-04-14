@@ -820,7 +820,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &273970816
 MonoBehaviour:
@@ -3131,12 +3131,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944122789}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.625, y: 5.684342e-14, z: -0.0000009536743}
-  m_LocalScale: {x: 11.25, y: 1, z: 5.9999156}
+  m_LocalPosition: {x: 0.875, y: 5.6843412e-14, z: -0.0000009536743}
+  m_LocalScale: {x: 8, y: 1, z: 5.9999156}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &951707778
 GameObject:
@@ -4060,7 +4060,7 @@ Transform:
   m_Children:
   - {fileID: 576760164}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 32, y: -148.89, z: 0}
 --- !u!1 &1322050973
 GameObject:
@@ -4673,32 +4673,33 @@ MonoBehaviour:
   moveSpeed: 3
   dashTime: 0.2
   dashSpeed: 15
+  dashTarget: 2.03
   dashCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: -0.35835728
-      outSlope: -0.35835728
+      value: 0
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07226428
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -2.4019363
-      outSlope: -2.4019363
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.017548203
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  fallStartSpeed: 0.1
-  fallMaxSpeed: 1
+  fallStartSpeed: 4
+  fallMaxSpeed: 8
   timeToReachMaxFallSpeed: 1
   fallSpeedCurve:
     serializedVersion: 2
@@ -4724,22 +4725,29 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  maxFallDis: 5
+  fallRotOffSpeed: {x: 10, y: -50, z: -60}
   sparkEmitter: {fileID: 2573539617665309218, guid: d23ee703f05f3104187a6dedb97076ed,
     type: 3}
   emitterOffset: {x: -0.91, y: 0.48, z: 0}
-  unpassBodyCheckRadius: 0.38
-  unpassBodyCheckOffsetA: 0.5
-  unpassBodyCheckOffsetB: -0.5
-  unpassTurnCheckDistance: 0.87
-  unpassTurnCheckRadius: 0.14
   unpassable:
     serializedVersion: 2
     m_Bits: 64
   ground:
     serializedVersion: 2
     m_Bits: 128
-  groundCheckDistance: 1
+  unpassBodyCheckRadius: 0.38
+  unpassBodyCheckOffsetA: 0.5
+  unpassBodyCheckOffsetB: -0.5
+  unpassTurnCheckDistance: 0.87
+  unpassTurnCheckRadius: 0.14
+  groundOriginCheckDistance: 0.79
+  groundTargetCheckDistance: 0.86
   groundCheckRadius: 0.1
+  fallCheckDistance: 2
+  SizzleFallZoneOffset: 0.15
+  SizzleFallZoneRect: {x: 1.92, y: 0.13, z: 0.6}
+  isAirborne: 0
 --- !u!4 &1563574406
 Transform:
   m_ObjectHideFlags: 0

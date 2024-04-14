@@ -3805,7 +3805,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4909,7 +4909,7 @@ GameObject:
   - component: {fileID: 2844892912715888467}
   - component: {fileID: 2703741872368685330}
   m_Layer: 0
-  m_Name: SparksEmitter 1
+  m_Name: SparksEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4929,7 +4929,7 @@ Transform:
   m_Children:
   - {fileID: 6806620024779776492}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!198 &6590585164016910102
 ParticleSystem:
@@ -8794,7 +8794,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 64
+      m_Bits: 192
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5

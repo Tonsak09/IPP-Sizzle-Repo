@@ -1,11 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class SizzleController : MonoBehaviour
 {
+    // BUGS: Can walk through ground that acts
+    //       should like a wall. 
+
     [Header("Controls")]
     [SerializeField] KeyCode forward;
     [SerializeField] KeyCode backward;
@@ -14,7 +18,6 @@ public class SizzleController : MonoBehaviour
     [SerializeField] KeyCode dash;
     [SerializeField] MouseButton spark;
  
-
     [Header("Turning")]
     [SerializeField] float turnTime;
 
@@ -24,6 +27,7 @@ public class SizzleController : MonoBehaviour
     [Header("Dashing")]
     [SerializeField] float dashTime;
     [SerializeField] float dashSpeed;
+    [SerializeField] float dashTarget; 
     [SerializeField] AnimationCurve dashCurve;
 
     [Header("Falling")]
@@ -32,32 +36,39 @@ public class SizzleController : MonoBehaviour
     [SerializeField] float timeToReachMaxFallSpeed;
     [SerializeField] AnimationCurve fallSpeedCurve;
     [SerializeField] float maxFallDis;
+    [SerializeField] Vector3 fallRotOffSpeed;
 
     [Header("Sparks")]
     [SerializeField] GameObject sparkEmitter;
     [SerializeField] Vector3 emitterOffset; // TODO: Attach to head bone but face same direction always 
 
     [Header("Collision Checking")]
+    [SerializeField] LayerMask unpassable;
+    [SerializeField] LayerMask ground;
     [SerializeField] float unpassBodyCheckRadius; // Used to see if the body can fully fit in an area 
     [SerializeField] float unpassBodyCheckOffsetA;
     [SerializeField] float unpassBodyCheckOffsetB;
     [SerializeField] float unpassTurnCheckDistance; // Use when checking ahead if there is an unpassable 
     [SerializeField] float unpassTurnCheckRadius;
-    [SerializeField] LayerMask unpassable;
-    [SerializeField] LayerMask ground;
-    [SerializeField] float groundCheckDistance;
+    [SerializeField] float groundOriginCheckDistance;
+    [SerializeField] float groundTargetCheckDistance;
     [SerializeField] float groundCheckRadius;
+    [SerializeField] float fallCheckDistance;
+    [Tooltip("Checks whether Sizzle could fall and is fully off an edge. " +
+             "Will stop Sizzle at edge if cannot completely fit off of it ")]
+    [SerializeField] float SizzleFallZoneOffset;
+    [SerializeField] Vector3 SizzleFallZoneRect;
 
     // Theses two variables range from -1 to 1 and
     // represent the current direction of movement 
     private int forwAxis = 1;
     private int sideAxis = 0;
 
-    private TurnType turn; // Used for animation manager
+    private TurnType turn; // Used for animation manager 
     private bool isTurning; // Whether a turn coroutine is active 
     private bool isDashing; // Whether a dash coroutine is active 
 
-    private bool isAirborne; 
+    public bool isAirborne; 
 
     void Start()
     {
@@ -147,11 +158,11 @@ public class SizzleController : MonoBehaviour
     /// <param name="nextPos">Next desired position</param>
     private bool TryMove(Vector3 dir, Vector3 nextPos, bool ignoreGround = false)
     {
-        bool hasGround = ignoreGround ? true : Physics.CheckSphere(this.transform.position + dir * groundCheckDistance, groundCheckRadius, ground);
-        bool noUnpassable =
+        bool hasGround = ignoreGround ? true : Physics.CheckCapsule(this.transform.position + dir * groundOriginCheckDistance, this.transform.position + dir * groundTargetCheckDistance, groundCheckRadius, ground);
+
+        bool noUnpassable = 
             !Physics.CheckSphere(nextPos + dir * unpassBodyCheckOffsetA, unpassBodyCheckRadius, unpassable) &&
             !Physics.CheckSphere(nextPos + dir * unpassBodyCheckOffsetB, unpassBodyCheckRadius, unpassable);
-
 
         if (hasGround && noUnpassable)
         {
@@ -248,6 +259,11 @@ public class SizzleController : MonoBehaviour
 
     private void DashLogic()
     {
+        // TODO: Make sure that if dashing off an edge
+        //       that there is enough space for the 
+        //       full Sizzle body to go off and if not
+        //       then stop dash at the edge 
+
         if (isDashing)
             return;
 
@@ -267,15 +283,17 @@ public class SizzleController : MonoBehaviour
     private IEnumerator DashCo()
     {
         Vector3 dir = new Vector3(-forwAxis, 0.0f, sideAxis).normalized;
+        Vector3 target = this.transform.position + dir * dashTarget;
+
+        Vector3 holdPos = this.transform.position;
 
         float timer = 0.0f;
         while(timer <= dashTime)
         {
-            float scale = dashSpeed * dashCurve.Evaluate(timer / dashTime) * Time.deltaTime;
-            if(!TryMove(dir, this.transform.position + dir * scale, true))
-            {
-                break;
-            }
+            float lerp = dashCurve.Evaluate(timer / dashTime);
+
+            Vector3 nextPos = Vector3.Lerp(holdPos, target, lerp);
+            this.transform.position = nextPos;
 
             timer += Time.deltaTime;
             yield return null;
@@ -294,29 +312,56 @@ public class SizzleController : MonoBehaviour
 
     private IEnumerator FallCo()
     {
+
+        // Raycast down to find next ground 
+
+        // Bring player down according to speed curve 
+
+        // If player is below desier position return them 
+        // to the desired location and break loop 
+
         RaycastHit hit;
-        /*if(Physics.Raycast(this.transform.position, Vector3.down, out hit, spawnDistance, spawnableSurface))
+        Physics.Raycast(this.transform.position, Vector3.down, out hit, fallCheckDistance, ground);
+
+
+        if(hit.collider == null)
         {
+            // Fall off map 
+            // Ex: AAAAAAAAHHHHH!!!!!
 
-        }*/
+            float timer = 0.0f;
+            while (true)
+            {
+                float speed = Mathf.Lerp(fallStartSpeed, fallMaxSpeed, fallSpeedCurve.Evaluate(timer / timeToReachMaxFallSpeed)) * Time.deltaTime;
 
-        float timer = 0.0f;
-        while(true)
-        {
-            float speed = Mathf.Lerp(fallStartSpeed, fallMaxSpeed, timer / timeToReachMaxFallSpeed) * Time.deltaTime;
+                this.transform.position += Vector3.down * speed;
+                this.transform.eulerAngles += fallRotOffSpeed * speed;
 
-            if (!TryMove(Vector3.down, this.transform.position + Vector3.down * speed))
-                break;
-
-            timer += Time.deltaTime;
-            yield return null;
+                timer += Time.deltaTime;
+                yield return null;
+            }
         }
+        else
+        {
+            // Fall animation 
 
+            float timer = 0.0f;
+            while (this.transform.position.y > hit.point.y)
+            {
+                float speed = Mathf.Lerp(fallStartSpeed, fallMaxSpeed, fallSpeedCurve.Evaluate(timer / timeToReachMaxFallSpeed)) * Time.deltaTime;
+
+                this.transform.position += Vector3.down * speed;
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            this.transform.position = hit.point;
+        }
         UpdateIsAirborne();
     }
 
    
-
     #endregion
 
     #region Sparks
@@ -336,15 +381,25 @@ public class SizzleController : MonoBehaviour
     {
         Vector3 dir = new Vector3(-forwAxis, 0.0f, sideAxis).normalized;
 
-        Gizmos.DrawWireSphere(this.transform.position + dir * unpassBodyCheckOffsetA, unpassBodyCheckRadius);
-        Gizmos.DrawWireSphere(this.transform.position + dir * unpassBodyCheckOffsetB, unpassBodyCheckRadius);
+        //Gizmos.DrawWireSphere(this.transform.position + dir * unpassBodyCheckOffsetA, unpassBodyCheckRadius);
+        //Gizmos.DrawWireSphere(this.transform.position + dir * unpassBodyCheckOffsetB, unpassBodyCheckRadius);
 
-        Gizmos.DrawWireSphere(this.transform.position + dir * groundCheckDistance, groundCheckRadius);
+        /*Gizmos.color = Color.green;
+        Gizmos.DrawSphere(this.transform.position + dir * groundOriginCheckDistance, groundCheckRadius);
+        Gizmos.DrawSphere(this.transform.position + dir * groundTargetCheckDistance, groundCheckRadius);*/
+
+        /*Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(this.transform.position + dir * unpassTurnCheckDistance, unpassTurnCheckRadius);*/
+
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(this.transform.position + dir * unpassTurnCheckDistance, unpassTurnCheckRadius);
+        Gizmos.DrawCube(this.transform.position + dir * dashTarget, new Vector3(0.1f, 0.1f, 0.1f));
 
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(this.transform.TransformPoint(emitterOffset), 0.05f);
+        Gizmos.DrawWireCube(this.transform.position + dir * SizzleFallZoneOffset, SizzleFallZoneRect);
+        //Gizmos.DrawSphere(this.transform.TransformPoint(emitterOffset), 0.05f);
+
+        Gizmos.DrawLine(this.transform.position, this.transform.position + Vector3.down * fallCheckDistance);
+
 
         Gizmos.color = Color.white;
         Gizmos.matrix = this.transform.localToWorldMatrix;
