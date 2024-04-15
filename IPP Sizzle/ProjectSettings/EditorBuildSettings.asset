@@ -20,7 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PitchScenes/Thorns.unity
     guid: 1536954e1679917449068497fbfe98c5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PitchScenes/WaterRuins.unity
     guid: b47d17e04a5cc8044b29907db1deb0cc
+  - enabled: 1
+    path: Assets/Scenes/TestingScenes/ControlsTesting.unity
+    guid: c5efcb125f0d221409dc4030e2ef2447
   m_configObjects: {}

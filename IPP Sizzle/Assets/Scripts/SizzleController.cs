@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SizzleController : MonoBehaviour
 {
@@ -86,7 +87,13 @@ public class SizzleController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
-            this.transform.position = new Vector3(0.0f, 0.5f, 0.0f);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
 
         if (isAirborne)
@@ -271,11 +278,6 @@ public class SizzleController : MonoBehaviour
 
     private void DashLogic()
     {
-        // TODO: Make sure that if dashing off an edge
-        //       that there is enough space for the 
-        //       full Sizzle body to go off and if not
-        //       then stop dash at the edge 
-
         if (isDashing)
             return;
 
