@@ -4671,17 +4671,17 @@ MonoBehaviour:
   spark: 0
   turnTime: 0.1
   moveSpeed: 3
-  dashTime: 0.2
+  dashTime: 0.3
   dashSpeed: 15
-  dashTarget: 2.03
+  dashTarget: 3
   dashCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -4689,8 +4689,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -4738,15 +4738,16 @@ MonoBehaviour:
     m_Bits: 128
   unpassBodyCheckRadius: 0.38
   unpassBodyCheckOffsetA: 0.5
-  unpassBodyCheckOffsetB: -0.5
+  unpassBodyCheckOffsetB: -0.05
   unpassTurnCheckDistance: 0.87
   unpassTurnCheckRadius: 0.14
   groundOriginCheckDistance: 0.79
   groundTargetCheckDistance: 0.86
   groundCheckRadius: 0.1
   fallCheckDistance: 2
-  SizzleFallZoneOffset: 0.15
-  SizzleFallZoneRect: {x: 1.92, y: 0.13, z: 0.6}
+  SizzleFallZoneOffset: -0.18
+  SizzleFallZoneRect: {x: 2.18, y: 0.13, z: 0.6}
+  SizzleFallFixRect: {x: 1.44, y: 0.13, z: 0.6}
   isAirborne: 0
 --- !u!4 &1563574406
 Transform:
