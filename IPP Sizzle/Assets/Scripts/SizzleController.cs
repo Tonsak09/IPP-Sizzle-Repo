@@ -60,6 +60,9 @@ public class SizzleController : MonoBehaviour
     [SerializeField] float SizzleFallZoneOffset;
     [SerializeField] Vector3 SizzleFallZoneRect;
     [SerializeField] Vector3 SizzleFallFixRect;
+    [SerializeField] float dashOccupiedCheckOffset;
+    [SerializeField] Vector3 dashOccupiedCheckRect;
+    [SerializeField] float dashOccupiedCheckRadius; 
 
     // NOTE: Sometimes Sizzle is within the fall zone but that fall zone may
     //       still have some of the tail in it. Instead of adjusting a more 
@@ -306,22 +309,24 @@ public class SizzleController : MonoBehaviour
         bool fallOffHasSpace = !Physics.CheckBox(target + dir * SizzleFallZoneOffset, SizzleFallZoneRect / 2.0f, Quaternion.FromToRotation(-Vector3.right, dir), ground);
         bool correctHasSpace = !Physics.CheckBox(target + dir * (falloffDiff.x / 2.0f) + dir * SizzleFallZoneOffset, SizzleFallFixRect / 2.0f, Quaternion.FromToRotation(-Vector3.right, dir), ground);
 
-        print("Falloff: " + fallOffHasSpace);
-        print("Correct: " + correctHasSpace);
-
-        /*
-            Vector3 falloffDiff = SizzleFallZoneRect - SizzleFallFixRect; // Correction zone 
-            DrawOrientedCubeGizmo(target + dir * (falloffDiff.x / 2.0f), SizzleFallFixRect, Quaternion.FromToRotation(-Vector3.right, dir));
-            Gizmos.color = Color.red;
-            DrawOrientedCubeGizmo(target, SizzleFallZoneRect, Quaternion.FromToRotation(-Vector3.right, dir));
-         */
-
+        // Dashing off edge needs a boost 
         if ((!fallOffHasSpace && correctHasSpace) )
         {
             // Add a little to the distance dashed 
             target += dir * (falloffDiff.x);
-            print("Added to dash distance");
         }
+
+        // Check if area is where you can completely fit 
+
+        // If completely good then dash and ignore ground
+        // Otherwise dash but include ground check 
+
+        //  target + dir * (dashOccupiedCheckOffset), 
+        bool canSizzleLand = DoesSizzleFitForDash(
+            target + dir * (dashOccupiedCheckOffset),
+            dashOccupiedCheckRect,
+            Quaternion.FromToRotation(-Vector3.right, dir));
+        print("Fine for dash: " + canSizzleLand);
 
         float timer = 0.0f;
         while(timer <= dashTime)
@@ -329,8 +334,8 @@ public class SizzleController : MonoBehaviour
             float lerp = dashCurve.Evaluate(timer / dashTime);
             Vector3 nextPos = Vector3.Lerp(holdPos, target, lerp);
 
-
-            if (!TryMove(dir, nextPos, correctHasSpace))
+            // Fully air or fully land to ignore ground 
+            if (!TryMove(dir, nextPos, correctHasSpace || canSizzleLand))
             {
                 break;
             }
@@ -361,6 +366,29 @@ public class SizzleController : MonoBehaviour
         }
 
         isDashing = false;
+    }
+
+    bool DoesSizzleFitForDash(Vector3 center, Vector3 size, Quaternion rotation)
+    {
+        Vector3 halfSize = size * 0.5f;
+
+        Vector3[] points = new Vector3[4];
+        points[0] = center + rotation * new Vector3(-halfSize.x, halfSize.y, -halfSize.z);
+        points[1] = center + rotation * new Vector3(halfSize.x, halfSize.y, -halfSize.z);
+        points[2] = center + rotation * new Vector3(halfSize.x, halfSize.y, halfSize.z);
+        points[3] = center + rotation * new Vector3(-halfSize.x, halfSize.y, halfSize.z);
+
+        foreach(Vector3 point in points)
+        {
+            // Is there open air here or an unpassable 
+            if(!Physics.CheckSphere(point, dashOccupiedCheckRadius, ground) || Physics.CheckSphere(point, dashOccupiedCheckRadius, unpassable))
+            {
+                return false; 
+            }
+        }
+
+        // All spots have ground and no unpassable 
+        return true;
     }
 
     private IEnumerator FallCo()
@@ -453,7 +481,6 @@ public class SizzleController : MonoBehaviour
 
         FallZoneGizmos(dir);
 
-
         //Gizmos.DrawSphere(this.transform.TransformPoint(emitterOffset), 0.05f);
 
 
@@ -470,20 +497,27 @@ public class SizzleController : MonoBehaviour
         mat *= Matrix4x4.Rotate(Quaternion.FromToRotation(-Vector3.right, dir));
         Gizmos.matrix = mat;*/
 
-        Vector3 target = this.transform.position + (dir * dashTarget) + (dir * SizzleFallZoneOffset);
+        Vector3 target = this.transform.position + (dir * dashTarget);
 
-        Gizmos.color = Color.green;
-        Vector3 falloffDiff = SizzleFallZoneRect - SizzleFallFixRect; // Correction zone 
-        DrawOrientedCubeGizmo(target + dir * (falloffDiff.x / 2.0f), SizzleFallFixRect, Quaternion.FromToRotation(-Vector3.right, dir));
-        Gizmos.color = Color.red;
-        DrawOrientedCubeGizmo(target, SizzleFallZoneRect, Quaternion.FromToRotation(-Vector3.right, dir));
+        Gizmos.color = Color.blue;
+        DrawOrientedCubeGizmo(
+            target + dir * (dashOccupiedCheckOffset), 
+            dashOccupiedCheckRect, 
+            Quaternion.FromToRotation(-Vector3.right, dir));
 
-        Gizmos.matrix = Matrix4x4.identity;
+
+        // Check area is full air 
+        /* Gizmos.color = Color.green;
+         Vector3 falloffDiff = SizzleFallZoneRect - SizzleFallFixRect; // Correction zone 
+         DrawOrientedCubeGizmo(target + dir * (falloffDiff.x / 2.0f), SizzleFallFixRect, Quaternion.FromToRotation(-Vector3.right, dir));
+         Gizmos.color = Color.red;
+         DrawOrientedCubeGizmo(target, SizzleFallZoneRect, Quaternion.FromToRotation(-Vector3.right, dir));*/
+
     }
 
     // Draws an oriented cube gizmo
     // Assisted by ChatGPT
-    public static void DrawOrientedCubeGizmo(Vector3 center, Vector3 size, Quaternion rotation)
+    void DrawOrientedCubeGizmo(Vector3 center, Vector3 size, Quaternion rotation)
     {
         // Calculate half sizes of the cube
         Vector3 halfSize = size * 0.5f;
@@ -498,6 +532,7 @@ public class SizzleController : MonoBehaviour
         corners[5] = center + rotation * new Vector3(halfSize.x, halfSize.y, -halfSize.z);
         corners[6] = center + rotation * new Vector3(halfSize.x, halfSize.y, halfSize.z);
         corners[7] = center + rotation * new Vector3(-halfSize.x, halfSize.y, halfSize.z);
+        DrawSphereOnArray(corners, dashOccupiedCheckRadius);
 
         // Draw the cube using Gizmos.DrawLine
         for (int i = 0; i < 4; i++)
@@ -506,6 +541,16 @@ public class SizzleController : MonoBehaviour
             Gizmos.DrawLine(corners[i + 4], corners[((i + 1) % 4) + 4]);
             Gizmos.DrawLine(corners[i], corners[i + 4]);
         }
+    }
+
+
+    void DrawSphereOnArray(Vector3[] points, float radius)
+    {
+        foreach(Vector3 point in points) 
+        { 
+            Gizmos.DrawSphere(point, radius);
+        }
+
     }
 
     #endregion
