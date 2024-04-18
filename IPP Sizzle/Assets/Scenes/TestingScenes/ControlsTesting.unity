@@ -4751,6 +4751,8 @@ MonoBehaviour:
   dashOccupiedCheckOffset: 0.31
   dashOccupiedCheckRect: {x: 1.2, y: 0, z: 0.6}
   dashOccupiedCheckRadius: 0.21
+  groundForwardOffset: {x: 0.88, y: 0.33}
+  groundForwardCheckRadius: 0.15
   isAirborne: 0
 --- !u!4 &1563574406
 Transform:

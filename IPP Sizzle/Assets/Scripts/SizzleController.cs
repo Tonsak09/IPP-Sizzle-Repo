@@ -62,7 +62,10 @@ public class SizzleController : MonoBehaviour
     [SerializeField] Vector3 SizzleFallFixRect;
     [SerializeField] float dashOccupiedCheckOffset;
     [SerializeField] Vector3 dashOccupiedCheckRect;
-    [SerializeField] float dashOccupiedCheckRadius; 
+    [SerializeField] float dashOccupiedCheckRadius;
+    [Tooltip("X is forward, Y is up")]
+    [SerializeField] Vector2 groundForwardOffset;
+    [SerializeField] float groundForwardCheckRadius;
 
     // NOTE: Sometimes Sizzle is within the fall zone but that fall zone may
     //       still have some of the tail in it. Instead of adjusting a more 
@@ -186,7 +189,14 @@ public class SizzleController : MonoBehaviour
             !Physics.CheckSphere(nextPos + dir * unpassBodyCheckOffsetA, unpassBodyCheckRadius, unpassable) &&
             !Physics.CheckSphere(nextPos + dir * unpassBodyCheckOffsetB, unpassBodyCheckRadius, unpassable);
 
-        if (hasGround && noUnpassable)
+        // Seperate check to see if there is ground
+        // in front of Sizzle. This could be another plateform 
+        // which we do not want to consider unpassable 
+        bool groundInfront = Physics.CheckSphere(
+            this.transform.position + dir * groundForwardOffset.x + Vector3.up * groundForwardOffset.y, 
+            groundForwardCheckRadius, ground);
+
+        if (hasGround && noUnpassable && !groundInfront)
         {
             this.transform.position = nextPos;
             return true; 
@@ -483,6 +493,8 @@ public class SizzleController : MonoBehaviour
 
         //Gizmos.DrawSphere(this.transform.TransformPoint(emitterOffset), 0.05f);
 
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(this.transform.position + dir * groundForwardOffset.x + Vector3.up * groundForwardOffset.y, groundForwardCheckRadius);
 
 
         /*Gizmos.color = Color.white;
