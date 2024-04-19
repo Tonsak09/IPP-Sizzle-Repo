@@ -42,8 +42,14 @@ Material:
     - _QueueOffset: 0
     - _Size: 2.5
     m_Colors:
-    - _Pupil: {r: -0.2, g: 0, b: 0, a: 0}
-    - _PupilColor: {r: 1, g: 1, b: 1, a: 0}
+    - _Pupil: {r: 0, g: 0, b: 0, a: 0}
+    - _PupilColor: {r: 0, g: 0, b: 0, a: 1}
+    - _PupilOrigin: {r: 0.16, g: 0, b: 0, a: 0}
+    - _PupilSize: {r: 0.3, g: 0.37, b: 0, a: 0}
+    - _ScleraColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ScleraOrigin: {r: 0, g: 0, b: 0, a: 0}
+    - _ScleraSize: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _SizeMod: {r: 0.25, g: 0.25, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2005100777123431362
 MonoBehaviour:
