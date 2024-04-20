@@ -9883,7 +9883,7 @@ MonoBehaviour:
   timeBetweenSpawnMin: 0.1
   timeBetweenSpawnMax: 0.2
   spawnRadius: 1
-  spawnDistance: 5
+  spawnDistance: 1
   minSpawn: 2
   maxSpawn: 5
   spawnableSurface:

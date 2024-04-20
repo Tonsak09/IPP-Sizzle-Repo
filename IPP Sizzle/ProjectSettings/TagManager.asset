@@ -13,6 +13,7 @@ TagManager:
   - UI
   - Unpassable
   - Ground
+  - Chargeable
   - 
   - 
   - 
@@ -25,7 +26,6 @@ TagManager:
   - 
   - 
   - 
-  - ForceSparksAway
   - 
   - 
   - 

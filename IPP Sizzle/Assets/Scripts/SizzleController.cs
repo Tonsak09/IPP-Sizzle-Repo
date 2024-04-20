@@ -8,9 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class SizzleController : MonoBehaviour
 {
-    // BUGS: Can walk through ground that acts
-    //       should like a wall. 
-
     [Header("Controls")]
     [SerializeField] KeyCode forward;
     [SerializeField] KeyCode backward;
@@ -87,6 +84,13 @@ public class SizzleController : MonoBehaviour
     void Start()
     {
         isTurning = false;
+
+        UpdateIsAirborne();
+
+        if(isAirborne)
+        {
+            StartCoroutine(FallCo());
+        }
     }
 
     void Update()
