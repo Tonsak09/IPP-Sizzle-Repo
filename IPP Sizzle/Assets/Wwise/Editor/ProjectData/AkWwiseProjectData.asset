@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: b64b3e0021fc044991244d74cae050c8
     GuidInternal: 
-    m_lastTime: -8584864748701741301
+    m_lastTime: -8584864744099975302
     List:
     - name: General
       guid: cd8f8587fae9b84b84d9bc7b4c434973
@@ -94,25 +94,8 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 8c599d4d1df2a74ca82226b84dfb2ee7
     GuidInternal: 
-    m_lastTime: -8584864749833915740
-    List:
-    - name: Play_New_Sound_SFX
-      guid: 6cb3e1e5ff37524681494ce9072f0436
-      id: 431205792
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
-      - ElementName: Play_New_Sound_SFX
-        ObjectType: 3
-        guid: 6cb3e1e5ff37524681494ce9072f0436
-      Path: Events\Default Work Unit\Play_New_Sound_SFX
-      maxAttenuation: 0
-      maxDuration: 131.08385
-      minDuration: 131.08385
+    m_lastTime: -8584864744100110787
+    List: []
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -170,7 +153,7 @@ MonoBehaviour:
     m_lastTime: -8584864761489170242
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 0600000007000000
+  ExpandedWaapiItemIds: 01000000030000000400000006000000070000000b0000000c000000
   AutoSyncSelection: 1
   autoPopulateEnabled: 1
   currentDataSource: 0

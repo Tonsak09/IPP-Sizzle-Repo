@@ -11,11 +11,6 @@
 
 namespace AK
 {
-    namespace EVENTS
-    {
-        static const AkUniqueID PLAY_NEW_SOUND_SFX = 431205792U;
-    } // namespace EVENTS
-
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;

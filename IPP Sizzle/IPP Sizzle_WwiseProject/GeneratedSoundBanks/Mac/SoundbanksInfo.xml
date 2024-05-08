@@ -9,22 +9,9 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="133642231" Type="User" Language="SFX" Hash="{39F0F19E-10C4-D0AE-88A6-80A72A6F24AD}">
+		<SoundBank Id="133642231" Type="User" Language="SFX" Hash="{8F51B547-19ED-B6B1-31AB-26D627F8FE30}">
 			<ShortName>General</ShortName>
 			<Path>General.bnk</Path>
-			<Media>
-				<File Id="401153813" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>QUIET STREET Back alley, people chatting, ST.wav</ShortName>
-					<CachePath>SFX/QUIET STREET Back alley, people chatting, ST_818F3B66.wem</CachePath>
-				</File>
-			</Media>
-			<Events>
-				<Event Id="431205792" Name="Play_New_Sound_SFX" DurationType="OneShot" DurationMin="131.08385" DurationMax="131.08385">
-					<MediaRefs>
-						<MediaRef Id="401153813"/>
-					</MediaRefs>
-				</Event>
-			</Events>
 		</SoundBank>
 		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{D326F752-7CA2-0A14-FDB1-63ECE89D0199}">
 			<ShortName>Init</ShortName>
@@ -40,5 +27,5 @@
 			</Busses>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{E44BECD7-E715-15D8-8526-2CCA530BEB64}</FileHash>
+	<FileHash>{28A4D6A5-B966-9FC8-3935-1A04F9F18C71}</FileHash>
 </SoundBanksInfo>
