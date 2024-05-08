@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	431205792	Play_New_Sound_SFX			\Default Work Unit\Play_New_Sound_SFX	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	401153813	New Sound SFX	J:\GitRepositories\IPP-Sizzle-Repo\IPP Sizzle\IPP Sizzle_WwiseProject\.cache\Mac\SFX\QUIET STREET Back alley, people chatting, ST_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\New Sound SFX		25168192
+

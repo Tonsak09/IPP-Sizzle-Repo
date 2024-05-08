@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo>
+	<Project Name="IPP Sizzle_WwiseProject" GUID="{A1B055E5-68D6-4415-8B50-6FCE42827428}" Generator="2023.1.3.8471"/>
+	<CacheRoot>../../../../IPP Sizzle_WwiseProject/.cache</CacheRoot>
+	<Platforms>
+		<Platform Name="Mac" GUID="{4699CA33-8FEC-4DAC-96CA-342DE4EE78E1}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="../../../../IPP Sizzle_WwiseProject/GeneratedSoundBanks/Mac"/>
+		<Platform Name="Windows" GUID="{6C1FD8C2-9F0A-4CBE-B801-CA50797B41F2}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../../../../IPP Sizzle_WwiseProject/GeneratedSoundBanks/Windows"/>
+	</Platforms>
+	<Languages>
+		<Language Name="English(US)" Id="684519430" GUID="{597B8023-DE46-42C7-89AA-B8DA90FA3478}" Default="true" UseAsStandIn="true"/>
+	</Languages>
+	<FileHash>{F5D63ACD-3171-DC9D-6A7A-EF5E83D659E1}</FileHash>
+</ProjectInfo>
