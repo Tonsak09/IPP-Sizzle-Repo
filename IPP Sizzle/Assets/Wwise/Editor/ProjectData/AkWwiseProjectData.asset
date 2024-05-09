@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 95f30e8759b20543a6b7ecc532057df3
     GuidInternal: 
-    m_lastTime: -8584863324636746612
+    m_lastTime: -8584864761488943079
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 262e5f8d65d066439ef8c68562d95156
     GuidInternal: 
-    m_lastTime: -8584863324642609690
+    m_lastTime: -8584864761489555727
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: b64b3e0021fc044991244d74cae050c8
     GuidInternal: 
-    m_lastTime: -8584863324636799636
+    m_lastTime: -8584863097120023012
     List:
     - name: General
       guid: cd8f8587fae9b84b84d9bc7b4c434973
@@ -94,8 +94,67 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 8c599d4d1df2a74ca82226b84dfb2ee7
     GuidInternal: 
-    m_lastTime: -8584863324642738009
+    m_lastTime: -8584863092180516452
     List: []
+  - PhysicalPath: Events\SFX.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+    - ElementName: SFX
+      ObjectType: 12
+      guid: 783d0fabd5b2ec448f9dba43f0b99694
+    ParentPath: Events\Default Work Unit\SFX
+    guid: 783d0fabd5b2ec448f9dba43f0b99694
+    GuidInternal: 
+    m_lastTime: -8584863082761124803
+    List:
+    - name: Play_Sparks
+      guid: 00f8c20c50d939469ae3cb21790c976c
+      id: 2858841480
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: Sparks
+        ObjectType: 4
+        guid: e8e1f35c8383ad4ba23d5deb98627e93
+      - ElementName: Play_Sparks
+        ObjectType: 3
+        guid: 00f8c20c50d939469ae3cb21790c976c
+      Path: Events\Default Work Unit\SFX\Sparks\Play_Sparks
+      maxAttenuation: 0
+      maxDuration: 1.1705668
+      minDuration: 0.9543475
+    - name: Sparks
+      guid: e8e1f35c8383ad4ba23d5deb98627e93
+      id: 2439012415
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: Sparks
+        ObjectType: 4
+        guid: e8e1f35c8383ad4ba23d5deb98627e93
+      Path: Events\Default Work Unit\SFX\Sparks
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -108,8 +167,22 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 5f0c040c5050b8409a710875d6e6d9c8
     GuidInternal: 
-    m_lastTime: -8584863324642727145
-    List: []
+    m_lastTime: -8584863090307978432
+    List:
+    - name: Particle_Length
+      guid: 3701512f5988d443bc21e1735a31e3cb
+      id: 3102480586
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 5f0c040c5050b8409a710875d6e6d9c8
+      - ElementName: Particle_Length
+        ObjectType: 13
+        guid: 3701512f5988d443bc21e1735a31e3cb
+      Path: Game Parameters\Default Work Unit\Particle_Length
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
@@ -122,7 +195,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 4738736669f0154d8274a44d6cb8cf7b
     GuidInternal: 
-    m_lastTime: -8584863324636778952
+    m_lastTime: -8584864761489615785
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -136,7 +209,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 250540500972504f888832f270a5ca9b
     GuidInternal: 
-    m_lastTime: -8584863324636766727
+    m_lastTime: -8584864761489788501
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -150,10 +223,10 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: f443cb6b54c4b84c8a1cbd607cd7b8d9
     GuidInternal: 
-    m_lastTime: -8584863324636756690
+    m_lastTime: -8584864761489170242
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 01000000030000000400000006000000070000000b0000000c000000
+  ExpandedWaapiItemIds: 01000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000e00000014000000170000005301000054010000aa010000ab010000ac010000f9010000a1020000a2020000f20200008c030000d8030000230400000c0b0000
   AutoSyncSelection: 1
   autoPopulateEnabled: 1
   currentDataSource: 0

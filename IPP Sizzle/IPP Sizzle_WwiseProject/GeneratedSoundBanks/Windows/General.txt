@@ -1,0 +1,8 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2858841480	Play_Sparks			\Default Work Unit\SFX\Sparks\Play_Sparks	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	293812897	Fireballs - Fire Ball 01	J:\GitRepositories\IPP-Sizzle-Repo\IPP Sizzle\IPP Sizzle_WwiseProject\.cache\Windows\SFX\Fireballs - Fire Ball 01_D4C07EA9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Spark Burst\Fireballs - Fire Ball 01		524384
+	633906341	Fireballs - Fire Ball 03	J:\GitRepositories\IPP-Sizzle-Repo\IPP Sizzle\IPP Sizzle_WwiseProject\.cache\Windows\SFX\Fireballs - Fire Ball 03_D4C07EA9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Spark Burst\Fireballs - Fire Ball 03		557152
+	715333636	Fireballs - Fire Ball 02	J:\GitRepositories\IPP-Sizzle-Repo\IPP Sizzle\IPP Sizzle_WwiseProject\.cache\Windows\SFX\Fireballs - Fire Ball 02_D4C07EA9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Spark Burst\Fireballs - Fire Ball 02		643168
+

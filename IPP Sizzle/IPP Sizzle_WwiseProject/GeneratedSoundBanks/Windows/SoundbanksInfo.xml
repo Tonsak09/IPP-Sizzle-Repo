@@ -9,11 +9,34 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="133642231" Type="User" Language="SFX" Hash="{8F51B547-19ED-B6B1-31AB-26D627F8FE30}">
+		<SoundBank Id="133642231" Type="User" Language="SFX" Hash="{06A06B26-B05E-8E67-C7F8-87520BB93463}">
 			<ShortName>General</ShortName>
 			<Path>General.bnk</Path>
+			<Media>
+				<File Id="293812897" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Fireballs - Fire Ball 01.wav</ShortName>
+					<CachePath>SFX/Fireballs - Fire Ball 01_D4C07EA9.wem</CachePath>
+				</File>
+				<File Id="633906341" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Fireballs - Fire Ball 03.wav</ShortName>
+					<CachePath>SFX/Fireballs - Fire Ball 03_D4C07EA9.wem</CachePath>
+				</File>
+				<File Id="715333636" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Fireballs - Fire Ball 02.wav</ShortName>
+					<CachePath>SFX/Fireballs - Fire Ball 02_D4C07EA9.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2858841480" Name="Play_Sparks" DurationType="OneShot" DurationMin="0.9543475" DurationMax="1.1705668">
+					<MediaRefs>
+						<MediaRef Id="293812897"/>
+						<MediaRef Id="633906341"/>
+						<MediaRef Id="715333636"/>
+					</MediaRefs>
+				</Event>
+			</Events>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{B6CBD692-12EC-CDBA-0932-48F63C40C91F}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{138FAE72-6229-62A8-7C38-92EAC67DC677}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -25,7 +48,10 @@
 			<Busses>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
+			<GameParameters>
+				<GameParameter Id="3102480586" Name="Particle_Length"/>
+			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{6C57687D-62CF-1147-EF6B-A64623D7BA77}</FileHash>
+	<FileHash>{0AFF413F-37CF-B3D9-2099-8F55C6DEB321}</FileHash>
 </SoundBanksInfo>
