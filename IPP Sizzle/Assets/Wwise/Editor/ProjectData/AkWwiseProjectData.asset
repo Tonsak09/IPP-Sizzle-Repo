@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: b64b3e0021fc044991244d74cae050c8
     GuidInternal: 
-    m_lastTime: -8584864744099975302
+    m_lastTime: -8584863097120023012
     List:
     - name: General
       guid: cd8f8587fae9b84b84d9bc7b4c434973
@@ -94,8 +94,67 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 8c599d4d1df2a74ca82226b84dfb2ee7
     GuidInternal: 
-    m_lastTime: -8584864744100110787
+    m_lastTime: -8584863092180516452
     List: []
+  - PhysicalPath: Events\SFX.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+    - ElementName: SFX
+      ObjectType: 12
+      guid: 783d0fabd5b2ec448f9dba43f0b99694
+    ParentPath: Events\Default Work Unit\SFX
+    guid: 783d0fabd5b2ec448f9dba43f0b99694
+    GuidInternal: 
+    m_lastTime: -8584863082761124803
+    List:
+    - name: Play_Sparks
+      guid: 00f8c20c50d939469ae3cb21790c976c
+      id: 2858841480
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: Sparks
+        ObjectType: 4
+        guid: e8e1f35c8383ad4ba23d5deb98627e93
+      - ElementName: Play_Sparks
+        ObjectType: 3
+        guid: 00f8c20c50d939469ae3cb21790c976c
+      Path: Events\Default Work Unit\SFX\Sparks\Play_Sparks
+      maxAttenuation: 0
+      maxDuration: 1.1705668
+      minDuration: 0.9543475
+    - name: Sparks
+      guid: e8e1f35c8383ad4ba23d5deb98627e93
+      id: 2439012415
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: Sparks
+        ObjectType: 4
+        guid: e8e1f35c8383ad4ba23d5deb98627e93
+      Path: Events\Default Work Unit\SFX\Sparks
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -108,8 +167,22 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 5f0c040c5050b8409a710875d6e6d9c8
     GuidInternal: 
-    m_lastTime: -8584864761489510363
-    List: []
+    m_lastTime: -8584863090307978432
+    List:
+    - name: Particle_Length
+      guid: 3701512f5988d443bc21e1735a31e3cb
+      id: 3102480586
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 5f0c040c5050b8409a710875d6e6d9c8
+      - ElementName: Particle_Length
+        ObjectType: 13
+        guid: 3701512f5988d443bc21e1735a31e3cb
+      Path: Game Parameters\Default Work Unit\Particle_Length
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
@@ -153,7 +226,7 @@ MonoBehaviour:
     m_lastTime: -8584864761489170242
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 01000000030000000400000006000000070000000b0000000c000000
+  ExpandedWaapiItemIds: 01000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000e00000014000000170000005301000054010000aa010000ab010000ac010000f9010000a1020000a2020000f20200008c030000d8030000230400000c0b0000
   AutoSyncSelection: 1
   autoPopulateEnabled: 1
   currentDataSource: 0

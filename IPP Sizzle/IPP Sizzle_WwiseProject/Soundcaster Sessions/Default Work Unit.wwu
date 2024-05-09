@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{17634AF7-02EF-48B2-B2B5-AA80DE821102}" SchemaVersion="119">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{17634AF7-02EF-48B2-B2B5-AA80DE821102}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{17634AF7-02EF-48B2-B2B5-AA80DE821102}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="SFX" ID="{E1B7E775-6489-422C-9774-247D4FDC40DE}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Play_Sparks" ID="{0CC2F800-D950-4639-9AE3-CB21790C976C}" WorkUnitID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="Particle_Length" ID="{2F510137-8859-43D4-BC21-E1735A31E3CB}"/>
+							<Value>0</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>

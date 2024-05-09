@@ -4,7 +4,9 @@
 		<WorkUnit Name="Default Work Unit" ID="{003E4BB6-FC21-4904-9124-4D74CAE050C8}" PersistMode="Standalone">
 			<ChildrenList>
 				<SoundBank Name="General" ID="{87858FCD-E9FA-4BB8-84D9-BC7B4C434973}">
-					<ObjectInclusionList/>
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_Sparks" ID="{0CC2F800-D950-4639-9AE3-CB21790C976C}" WorkUnitID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
