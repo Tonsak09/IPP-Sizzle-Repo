@@ -467,6 +467,8 @@ public class SizzleController : MonoBehaviour
         {
             GameObject emitter = Instantiate(sparkEmitter, this.transform.TransformPoint(emitterOffset), this.transform.rotation);
             emitter.transform.forward = new Vector3(-forwAxis, 0.0f, sideAxis).normalized;
+
+            AkSoundEngine.PostEvent("Play_Sparks", this.gameObject);
         }
     }
 
