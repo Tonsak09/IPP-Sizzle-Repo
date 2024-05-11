@@ -37,8 +37,8 @@ public class NPC : MonoBehaviour
 
     [Header("Dialogue")]
     [SerializeField] TextMeshPro textMesh;
-    [SerializeField] List<string> text;
     [SerializeField][Range(0.0f, 1.0f)] float showTextThreshold;
+    [SerializeField] List<string> text;
     [Space]
     [SerializeField] Transform dialogueTrans;
     [SerializeField] float dialogueIncreaseRate;
@@ -48,8 +48,10 @@ public class NPC : MonoBehaviour
     [SerializeField] AnimationCurve dialogueCurveScaleX;
     [SerializeField] AnimationCurve dialogueCurveScaleY;
 
-    public float interest;
-    public float dialogueLerp;
+    private float interest;
+    private float dialogueLerp;
+
+    private int currentText; 
 
     private Transform sizzle;
     private CameraLogic camLogic;
@@ -68,6 +70,12 @@ public class NPC : MonoBehaviour
             Debug.LogError("Sizzle not found in scene");
     }
 
+    private void Start()
+    {
+        interestIndicator.gameObject.SetActive(true);
+        dialogueTrans.gameObject.SetActive(true);
+    }
+
     private void Update()
     {
         bool isSizzleOutOfRange = Vector3.Distance(sizzle.position, this.transform.position + interableOffset) > interactableRadius;
@@ -75,11 +83,16 @@ public class NPC : MonoBehaviour
         // Check if Sizzle is in range 
         if (isSizzleOutOfRange)
         {
-            if(state == NPCState.TALKING)
+            switch (state)
             {
-                // Player walked away 
-                camLogic.LerpOrthSizeToStandard(lenseLeaveTime, lenseLeaveCurve);
-                camLogic.LockToTransformStandard(focusLeaveTime);
+                case NPCState.TALKING:
+                    // Player walked away 
+                    ResetDialogueText();
+                    break;
+                case NPCState.FINISHED_TALKING:
+                    // Must wait for player to leave before 
+                    // reseting to interactable again 
+                    break;
             }
 
             state = NPCState.IDLE;
@@ -104,7 +117,9 @@ public class NPC : MonoBehaviour
                         camLogic.LockToTransform(camFocus, focusTime, focusCurve);
                         state = NPCState.TALKING;
                     }
-
+                    break;
+                case NPCState.TALKING:
+                    DialogueLogic();
                     break;
             }
         }
@@ -148,11 +163,6 @@ public class NPC : MonoBehaviour
         else
         {
             dialogueLerp = Mathf.Clamp01(dialogueLerp + dialogueIncreaseRate * Time.deltaTime);
-
-            if(dialogueLerp >= showTextThreshold)
-            {
-                textMesh.text = text[0];
-            }
         }
 
         float scaleX = Mathf.LerpUnclamped(dialogueStartScale.x, dialogueTargetScale.x, dialogueCurveScaleX.Evaluate(dialogueLerp));
@@ -160,11 +170,46 @@ public class NPC : MonoBehaviour
         dialogueTrans.localScale = new Vector3(scaleX, scaleY, 1.0f);
     }
 
+    /// <summary>
+    /// This is for running what text should be displayed 
+    /// and any commands done through text 
+    /// </summary>
+    private void DialogueLogic()
+    {
+
+        if (dialogueLerp < showTextThreshold)
+            return;
+
+        textMesh.text = text[currentText];
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Close dialogue if end reached
+            if (currentText + 1 >= text.Count)
+            {
+                ResetDialogueText();
+                state = NPCState.FINISHED_TALKING;
+                return;
+            }
+
+            currentText++;
+        }
+    }
+
+    private void ResetDialogueText()
+    {
+        camLogic.LerpOrthSizeToStandard(lenseLeaveTime, lenseLeaveCurve);
+        camLogic.LockToTransformStandard(focusLeaveTime);
+
+        currentText = 0;
+    }
+
     private enum NPCState
     {
         IDLE,
         INTERESTED,
-        TALKING
+        TALKING,
+        FINISHED_TALKING
     }
 
     private void OnDrawGizmosSelected()
