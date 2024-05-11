@@ -9880,6 +9880,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  chargeable:
+    serializedVersion: 2
+    m_Bits: 256
   mushroom: {fileID: 3218180438619880354, guid: 5faa04dbe9eaf6f46954bce25448bd96,
     type: 3}
   timeTillMushroomsSpawn: 1.1

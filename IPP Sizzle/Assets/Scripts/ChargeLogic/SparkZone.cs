@@ -8,6 +8,7 @@ public class SparkZone : MonoBehaviour
     [SerializeField] float chargeRadius;
     [SerializeField] float lifeTime;
     [SerializeField] AnimationCurve chargeRadiusCurve;
+    [SerializeField] LayerMask chargeable;
 
     [Header("Mushroom Spawning")]
     [SerializeField] GameObject mushroom;
@@ -40,6 +41,10 @@ public class SparkZone : MonoBehaviour
     {
         timer += Time.deltaTime;
         chargeRadius = Mathf.Lerp(chargeRadius, 0.0f, chargeRadiusCurve.Evaluate(timer / lifeTime));
+
+        Collider[] chargeColliders = Physics.OverlapSphere(chargeZone, chargeRadius, chargeable);
+        for (int i = 0; i < chargeColliders.Length; i++)
+            print(chargeColliders[i]); 
 
         MushroomSpawnLogic();
     }

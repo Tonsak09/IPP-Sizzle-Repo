@@ -340,7 +340,7 @@ public class SizzleController : MonoBehaviour
             target + dir * (dashOccupiedCheckOffset),
             dashOccupiedCheckRect,
             Quaternion.FromToRotation(-Vector3.right, dir));
-        print("Fine for dash: " + canSizzleLand);
+        //print("Fine for dash: " + canSizzleLand);
 
         float timer = 0.0f;
         while(timer <= dashTime)
