@@ -11,7 +11,7 @@ public abstract class Chargeable : MonoBehaviour
 
     private float charge = 0.0f; 
 
-    public virtual void Charge()
+    public virtual void Charge(Transform source)
     {
         charge += Time.deltaTime;
     }

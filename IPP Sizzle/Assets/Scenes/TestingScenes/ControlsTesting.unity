@@ -1337,8 +1337,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974a03a1a02d63d44914801d6dc8e735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeOrigins:
-  - {fileID: 1524902110}
+  maxChargeAmount: 0
+  thresholdChargeAmount: 0
+  depleteRate: 0
+  chargeOrigins: []
   hiddenDesignRenderer: {fileID: 676602868}
 --- !u!1 &1079245077 stripped
 GameObject:

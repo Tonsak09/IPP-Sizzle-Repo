@@ -25,9 +25,15 @@ public class SparkZone : MonoBehaviour
     private ParticleSystem sparksEmitter;
     private ParticleSystem.Particle[] particles;
 
-    private Vector3 chargeZone;
+    //private Vector3 chargeZone;
+    private Transform chargeZone; 
 
     private float timer;
+
+    private void Awake()
+    {
+        chargeZone = new GameObject("ChargeZone").transform;
+    }
 
     private void Start()
     {
@@ -35,6 +41,7 @@ public class SparkZone : MonoBehaviour
 
         if (particles == null || particles.Length < sparksEmitter.main.maxParticles)
             particles = new ParticleSystem.Particle[sparksEmitter.main.maxParticles];
+
     }
 
     private void Update()
@@ -42,9 +49,9 @@ public class SparkZone : MonoBehaviour
         timer += Time.deltaTime;
         chargeRadius = Mathf.Lerp(chargeRadius, 0.0f, chargeRadiusCurve.Evaluate(timer / lifeTime));
 
-        Collider[] chargeColliders = Physics.OverlapSphere(chargeZone, chargeRadius, chargeable);
+        Collider[] chargeColliders = Physics.OverlapSphere(chargeZone.position, chargeRadius, chargeable);
         for (int i = 0; i < chargeColliders.Length; i++)
-            print(chargeColliders[i]); 
+            chargeColliders[i].GetComponent<Chargeable>().Charge(chargeZone);
 
         MushroomSpawnLogic();
     }
@@ -85,7 +92,7 @@ public class SparkZone : MonoBehaviour
         }
         avgPos /= pAlive;
 
-        chargeZone = avgPos;
+        chargeZone.position = avgPos;
     }
 
     private IEnumerator SpawningOverTime()
@@ -93,7 +100,7 @@ public class SparkZone : MonoBehaviour
         int spawnCount = Random.Range(minSpawn, maxSpawn);
         for (int i = 0; i < spawnCount; i++)
         {
-            Vector3 startPos = chargeZone + new Vector3(
+            Vector3 startPos = chargeZone.position + new Vector3(
                 Random.Range(-spawnRadius, spawnRadius),
                 Random.Range(-spawnRadius, spawnRadius),
                 Random.Range(-spawnRadius, spawnRadius));
@@ -112,6 +119,6 @@ public class SparkZone : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(chargeZone, chargeRadius);
+        Gizmos.DrawWireSphere(chargeZone.position, chargeRadius);
     }
 }
