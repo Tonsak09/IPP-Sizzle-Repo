@@ -64,6 +64,9 @@ public class SizzleController : MonoBehaviour
     [SerializeField] Vector2 groundForwardOffset;
     [SerializeField] float groundForwardCheckRadius;
 
+    [Header("Gizmos")]
+    [SerializeField] SizzleGizmosType gizmosDisplay;
+
     // NOTE: Sometimes Sizzle is within the fall zone but that fall zone may
     //       still have some of the tail in it. Instead of adjusting a more 
     //       strict fall zone we use this zone to increase Sizzle's dash a 
@@ -79,7 +82,7 @@ public class SizzleController : MonoBehaviour
     private bool isTurning; // Whether a turn coroutine is active 
     private bool isDashing; // Whether a dash coroutine is active 
 
-    public bool isAirborne; 
+    private bool isAirborne; 
 
     void Start()
     {
@@ -480,35 +483,48 @@ public class SizzleController : MonoBehaviour
     {
         Vector3 dir = new Vector3(-forwAxis, 0.0f, sideAxis).normalized;
 
-        //Gizmos.DrawWireSphere(this.transform.position + dir * unpassBodyCheckOffsetA, unpassBodyCheckRadius);
-        //Gizmos.DrawWireSphere(this.transform.position + dir * unpassBodyCheckOffsetB, unpassBodyCheckRadius);
-
-        /*Gizmos.color = Color.green;
-        Gizmos.DrawSphere(this.transform.position + dir * groundOriginCheckDistance, groundCheckRadius);
-        Gizmos.DrawSphere(this.transform.position + dir * groundTargetCheckDistance, groundCheckRadius);*/
-
-        /*Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(this.transform.position + dir * unpassTurnCheckDistance, unpassTurnCheckRadius);*/
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(this.transform.position + dir * dashTarget, new Vector3(0.1f, 0.1f, 0.1f));
-
-        Gizmos.DrawLine(this.transform.position, this.transform.position + Vector3.down * fallCheckDistance);
-
-        FallZoneGizmos(dir);
-
-        //Gizmos.DrawSphere(this.transform.TransformPoint(emitterOffset), 0.05f);
-
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(this.transform.position + dir * groundForwardOffset.x + Vector3.up * groundForwardOffset.y, groundForwardCheckRadius);
-
-
-        /*Gizmos.color = Color.white;
-        Gizmos.matrix = this.transform.localToWorldMatrix;
-        Gizmos.DrawSphere(new Vector3(0, 0, 0), 0.1f);*/
+        switch (gizmosDisplay)
+        {
+            case SizzleGizmosType.NONE:
+                break;
+            case SizzleGizmosType.UNPASSABLE_WALK_CHECK:
+                Gizmos.DrawWireSphere(this.transform.position + dir * unpassBodyCheckOffsetA, unpassBodyCheckRadius);
+                Gizmos.DrawWireSphere(this.transform.position + dir * unpassBodyCheckOffsetB, unpassBodyCheckRadius);
+                break;
+            case SizzleGizmosType.UNPASSABLE_TURN_CHECK:
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawWireSphere(this.transform.position + dir * unpassTurnCheckDistance, unpassTurnCheckRadius);
+                break;
+            case SizzleGizmosType.GROUND_CHECK:
+                Gizmos.DrawSphere(this.transform.position + dir * groundOriginCheckDistance, groundCheckRadius);
+                Gizmos.DrawSphere(this.transform.position + dir * groundTargetCheckDistance, groundCheckRadius);
+                break;
+            case SizzleGizmosType.DASH_TARGET:
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawCube(this.transform.position + dir * dashTarget, new Vector3(0.1f, 0.1f, 0.1f));
+                break;
+            case SizzleGizmosType.FALL_RAY:
+                Gizmos.DrawLine(this.transform.position, this.transform.position + Vector3.down * fallCheckDistance);
+                break;
+            case SizzleGizmosType.FALL_ZONE:
+                DashOccupiedCheck(dir);
+                break;
+            case SizzleGizmosType.DASH_OCCUPIED_CHECK:
+                DashOccupiedCheck(dir);
+                break;
+            case SizzleGizmosType.DASH_OFF_ZONE:
+                DashOffGizmos(dir);
+                break;
+            case SizzleGizmosType.SPARK_EMITTER:
+                break;
+            case SizzleGizmosType.FORWARD_GROUND_CHECK:
+                Gizmos.color = Color.green;
+                Gizmos.DrawSphere(this.transform.position + dir * groundForwardOffset.x + Vector3.up * groundForwardOffset.y, groundForwardCheckRadius);
+                break;
+        }
     }
 
-    private void FallZoneGizmos(Vector3 dir)
+    private void DashOccupiedCheck(Vector3 dir)
     {
         /*Matrix4x4 mat = Matrix4x4.identity;
         mat = Matrix4x4.Translate(this.transform.position + dir * dashTarget);
@@ -524,13 +540,19 @@ public class SizzleController : MonoBehaviour
             Quaternion.FromToRotation(-Vector3.right, dir));
 
 
-        // Check area is full air 
-        /* Gizmos.color = Color.green;
-         Vector3 falloffDiff = SizzleFallZoneRect - SizzleFallFixRect; // Correction zone 
-         DrawOrientedCubeGizmo(target + dir * (falloffDiff.x / 2.0f), SizzleFallFixRect, Quaternion.FromToRotation(-Vector3.right, dir));
-         Gizmos.color = Color.red;
-         DrawOrientedCubeGizmo(target, SizzleFallZoneRect, Quaternion.FromToRotation(-Vector3.right, dir));*/
+        
+    }
 
+    private void DashOffGizmos(Vector3 dir)
+    {
+        Vector3 target = this.transform.position + (dir * dashTarget);
+
+        // Check area is full air 
+        Gizmos.color = Color.green;
+        Vector3 falloffDiff = SizzleFallZoneRect - SizzleFallFixRect; // Correction zone 
+        DrawOrientedCubeGizmo(target + dir * (falloffDiff.x / 2.0f), SizzleFallFixRect, Quaternion.FromToRotation(-Vector3.right, dir));
+        Gizmos.color = Color.red;
+        DrawOrientedCubeGizmo(target, SizzleFallZoneRect, Quaternion.FromToRotation(-Vector3.right, dir));
     }
 
     // Draws an oriented cube gizmo
@@ -569,6 +591,21 @@ public class SizzleController : MonoBehaviour
             Gizmos.DrawSphere(point, radius);
         }
 
+    }
+
+    private enum SizzleGizmosType
+    {
+        NONE,
+        UNPASSABLE_WALK_CHECK,
+        UNPASSABLE_TURN_CHECK,
+        GROUND_CHECK,
+        DASH_TARGET,
+        FALL_RAY,
+        FALL_ZONE,
+        DASH_OCCUPIED_CHECK,
+        DASH_OFF_ZONE,
+        SPARK_EMITTER,
+        FORWARD_GROUND_CHECK,
     }
 
     #endregion
