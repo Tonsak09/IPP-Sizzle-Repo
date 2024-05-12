@@ -33,6 +33,7 @@ public class SparkZone : MonoBehaviour
     private void Awake()
     {
         chargeZone = new GameObject("ChargeZone").transform;
+        chargeZone.position = this.transform.position;
     }
 
     private void Start()
@@ -92,7 +93,8 @@ public class SparkZone : MonoBehaviour
         }
         avgPos /= pAlive;
 
-        chargeZone.position = avgPos;
+        if(pAlive > 0)
+            chargeZone.position = avgPos;
     }
 
     private IEnumerator SpawningOverTime()
