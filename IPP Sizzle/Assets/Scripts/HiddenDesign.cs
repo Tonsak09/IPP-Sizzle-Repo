@@ -10,9 +10,14 @@ public class HiddenDesign : Chargeable
     /// </summary>
     private const int MAX_CHARGES = 6;
 
+    [Header("Hidden Design")]
     [SerializeField] List<Transform> chargeOrigins;
     [SerializeField] Renderer hiddenDesignRenderer;
     private Material hiddenDesignMaterial;
+
+    [Header("Fully charged animation")]
+    [SerializeField] float radiusIncreaseRate;
+    [SerializeField] float maxRadius;
 
     void Start()
     {
@@ -20,6 +25,35 @@ public class HiddenDesign : Chargeable
     }
 
     void Update()
+    {
+        if(charge <= thresholdChargeAmount)
+        {
+            ManageChargeTrans();
+        }
+        else
+        {
+            AnimateRadiusFill();
+        }
+    }
+
+    private void AnimateRadiusFill()
+    {
+        float radius = hiddenDesignMaterial.GetFloat("_ChargeRadius");
+        radius += radiusIncreaseRate * Time.deltaTime;
+
+        hiddenDesignMaterial.SetFloat("_ChargeRadius", radius);
+
+        if(radius >= maxRadius)
+        {
+            chargeOrigins.Clear();
+            this.enabled = false;
+        }
+    }
+
+    /// <summary>
+    /// Cleanup transforms if null and send their data to shader 
+    /// </summary>
+    private void ManageChargeTrans()
     {
         for (int i = 0; i < chargeOrigins.Count; i++)
         {
@@ -53,11 +87,7 @@ public class HiddenDesign : Chargeable
 
     public override void Charge(Transform source)
     {
+        base.Charge(source);
         AddCharge(source);
-    }
-
-    private void ManagerCharges()
-    {
-        // Check if null or out of range 
     }
 }

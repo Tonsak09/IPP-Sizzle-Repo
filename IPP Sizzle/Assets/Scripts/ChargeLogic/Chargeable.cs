@@ -5,15 +5,26 @@ using UnityEngine;
 public abstract class Chargeable : MonoBehaviour
 {
     [Header("Chargeable")]
-    [SerializeField] float maxChargeAmount;
-    [SerializeField] float thresholdChargeAmount;
+    [Tooltip("The max amount of charge that this object can hold")]
+    [SerializeField] protected float maxChargeAmount;
+    [Tooltip("Threshold for this chargeable's logic to be considered charged")]
+    [SerializeField] protected float thresholdChargeAmount;
+    [SerializeField] float chargeRate;
     [SerializeField] float depleteRate;
 
-    private float charge = 0.0f; 
+    [SerializeField] protected float charge = 0.0f;
+    
 
     public virtual void Charge(Transform source)
     {
-        charge += Time.deltaTime;
+        float delta = chargeRate * Time.deltaTime;
+        if(charge + delta > maxChargeAmount)
+        {
+            charge = maxChargeAmount;
+            return;
+        }
+
+        charge += delta;
     }
 
     protected virtual void DepleteCharge()

@@ -8,6 +8,7 @@ public class SparkZone : MonoBehaviour
     [SerializeField] float chargeRadius;
     [SerializeField] float lifeTime;
     [SerializeField] AnimationCurve chargeRadiusCurve;
+    [SerializeField] GameObject chargeZoneObj;
     [SerializeField] LayerMask chargeable;
 
     [Header("Mushroom Spawning")]
@@ -32,8 +33,8 @@ public class SparkZone : MonoBehaviour
 
     private void Awake()
     {
-        chargeZone = new GameObject("ChargeZone").transform;
-        chargeZone.position = this.transform.position;
+        chargeZone = Instantiate(chargeZoneObj, this.transform.position, Quaternion.identity).transform;
+        chargeZone.parent = this.transform;
     }
 
     private void Start()

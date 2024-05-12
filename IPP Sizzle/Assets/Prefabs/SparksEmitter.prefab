@@ -9880,6 +9880,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  chargeZoneObj: {fileID: 8206084514855641291, guid: fada7cdc212442f4c8c0a0284b8346f0,
+    type: 3}
   chargeable:
     serializedVersion: 2
     m_Bits: 256
