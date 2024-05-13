@@ -20,6 +20,9 @@ public class EyesCoordinator : MonoBehaviour
 
     void Update()
     {
+        if(!target)
+            return;
+
         foreach(Renderer r in eyeRenderers)
         {
             ProcessEye(r);
