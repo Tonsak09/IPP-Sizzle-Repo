@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{66733847-F069-4D15-8274-A44D6CB8CF7B}" SchemaVersion="119">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{66733847-F069-4D15-8274-A44D6CB8CF7B}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{66733847-F069-4D15-8274-A44D6CB8CF7B}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Ambiences" ID="{C6533623-E6C1-493D-BD8E-E4533C21D357}" ShortID="718866948">
+					<ChildrenList>
+						<StateGroup Name="Ambiences" ID="{325C9E8B-C540-471C-A06B-EDF604274181}">
+							<ChildrenList>
+								<State Name="None" ID="{55656D38-6954-41D8-9672-939F97083A2C}"/>
+								<State Name="Cavern_Inside" ID="{A78FCE4D-6B90-47EA-AC24-04AA7A5B89F5}"/>
+								<State Name="Cavern_Top" ID="{452EA925-56CD-44BD-9801-79B1D107EA8F}"/>
+							</ChildrenList>
+						</StateGroup>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>

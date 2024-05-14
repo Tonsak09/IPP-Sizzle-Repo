@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{1F9C0CCA-918E-4B04-AEDE-BA5C8C802E3C}" SchemaVersion="119" RootDocumentID="{4D9D598C-F21D-4CA7-A822-26B84DFB2EE7}" ParentDocumentID="{4D9D598C-F21D-4CA7-A822-26B84DFB2EE7}">
+	<Events>
+		<WorkUnit Name="Music" ID="{1F9C0CCA-918E-4B04-AEDE-BA5C8C802E3C}" OwnerID="{4D9D598C-F21D-4CA7-A822-26B84DFB2EE7}" PersistMode="Nested">
+			<ChildrenList>
+				<Folder Name="Basics" ID="{8AF274EB-AEF8-4D77-9AA8-DC26227D9E04}" ShortID="215290650">
+					<ChildrenList>
+						<Event Name="Play_Music" ID="{AD360673-7EFE-42E8-9F84-BA1DE44C622D}"/>
+						<Event Name="Stop_Music" ID="{D0D76C37-76D0-41FC-83D4-4A9414A40C22}"/>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

@@ -9,49 +9,149 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="133642231" Type="User" Language="SFX" Hash="{06A06B26-B05E-8E67-C7F8-87520BB93463}">
+		<SoundBank Id="133642231" Type="User" Language="SFX" Hash="{BBACF2BF-BCFA-29A9-B1C0-F4C70210E727}">
 			<ShortName>General</ShortName>
 			<Path>General.bnk</Path>
 			<Media>
+				<File Id="33650004" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SCIEnrg_Synth Beeps_PSE_OS_v7wuJ.wav</ShortName>
+					<CachePath>SFX/SCIEnrg_Synth Beeps_PSE_OS_v7wuJ_1F72B928.wem</CachePath>
+				</File>
+				<File Id="252463775" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(2).wav</ShortName>
+					<CachePath>SFX/SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(2)_BA181EDD.wem</CachePath>
+				</File>
+				<File Id="283673616" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(3).wav</ShortName>
+					<CachePath>SFX/SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(3)_E37DC06C.wem</CachePath>
+				</File>
 				<File Id="293812897" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fireballs - Fire Ball 01.wav</ShortName>
-					<CachePath>SFX/Fireballs - Fire Ball 01_D4C07EA9.wem</CachePath>
+					<CachePath>SFX/Fireballs - Fire Ball 01_6E98EF39.wem</CachePath>
 				</File>
 				<File Id="633906341" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fireballs - Fire Ball 03.wav</ShortName>
-					<CachePath>SFX/Fireballs - Fire Ball 03_D4C07EA9.wem</CachePath>
+					<CachePath>SFX/Fireballs - Fire Ball 03_6E98EF39.wem</CachePath>
 				</File>
 				<File Id="715333636" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fireballs - Fire Ball 02.wav</ShortName>
-					<CachePath>SFX/Fireballs - Fire Ball 02_D4C07EA9.wem</CachePath>
+					<CachePath>SFX/Fireballs - Fire Ball 02_6E98EF39.wem</CachePath>
 				</File>
 			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="868598368" Name="Have_U_Ever_Been_Outside (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="942477861" Name="Have_U_Ever_Been_Outside (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
+			</Plugins>
 			<Events>
-				<Event Id="2858841480" Name="Play_Sparks" DurationType="OneShot" DurationMin="0.9543475" DurationMax="1.1705668">
+				<Event Id="278617630" Name="Play_Ambience" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2211787386" Name="Play_Dash" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="267911644" Name="Play_Dialogue" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3529336852" Name="Play_Dialogue_Next" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2932040671" Name="Play_Music" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2990278359" Name="Play_Pop" DurationType="OneShot" DurationMin="0.54757065" DurationMax="1.0378798">
+					<MediaRefs>
+						<MediaRef Id="33650004"/>
+						<MediaRef Id="252463775"/>
+						<MediaRef Id="283673616"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2543217447" Name="Play_SMushroom_Grow" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2858841480" Name="Play_Sparks" DurationType="OneShot" DurationMin="0.71495277" DurationMax="1.2401724">
 					<MediaRefs>
 						<MediaRef Id="293812897"/>
 						<MediaRef Id="633906341"/>
 						<MediaRef Id="715333636"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="2477713992" Name="Stop_Ambience" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="288905442" Name="Stop_Dialogue" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2837384057" Name="Stop_Music" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
+			<Busses>
+				<Bus Id="393239870" Name="SFX">
+					<AuxBusRefs>
+						<AuxBusRef Id="2003928189" Name="Cavern_Inside"/>
+						<AuxBusRef Id="3918031554" Name="Cavern_Top"/>
+					</AuxBusRefs>
+				</Bus>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<AuxBusses>
+				<AuxBus Id="2003928189" Name="Cavern_Inside">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="868598368"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3918031554" Name="Cavern_Top">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="942477861"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+			</AuxBusses>
+			<StateGroups>
+				<StateGroup Id="1017660616" Name="Ambiences">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="2003928189" Name="Cavern_Inside"/>
+						<State Id="3918031554" Name="Cavern_Top"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{11CAD668-A69C-B500-4973-08E4968300FA}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{E6D49B64-C5C0-F364-D7ED-79A4D7F94AA9}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
+				<Custom>
+					<Plugin Id="868598368" Name="Have_U_Ever_Been_Outside (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="942477861" Name="Have_U_Ever_Been_Outside (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
 				<AudioDevices>
 					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
 					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
 				</AudioDevices>
 			</Plugins>
 			<Busses>
+				<Bus Id="393239870" Name="SFX">
+					<AuxBusRefs>
+						<AuxBusRef Id="2003928189" Name="Cavern_Inside"/>
+						<AuxBusRef Id="3918031554" Name="Cavern_Top"/>
+					</AuxBusRefs>
+				</Bus>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
-			<GameParameters>
-				<GameParameter Id="3102480586" Name="Particle_Length"/>
-			</GameParameters>
+			<AuxBusses>
+				<AuxBus Id="2003928189" Name="Cavern_Inside">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="868598368"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3918031554" Name="Cavern_Top">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="942477861"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+			</AuxBusses>
+			<StateGroups>
+				<StateGroup Id="1017660616" Name="Ambiences">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="2003928189" Name="Cavern_Inside"/>
+						<State Id="3918031554" Name="Cavern_Top"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{D6B0E927-427C-D9DF-8604-976198C262E0}</FileHash>
+	<FileHash>{D55C1809-0519-9697-FD25-9147629675A9}</FileHash>
 </SoundBanksInfo>

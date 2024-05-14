@@ -38,8 +38,48 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 262e5f8d65d066439ef8c68562d95156
     GuidInternal: 
-    m_lastTime: -8584863324642609690
+    m_lastTime: -8584859529395156537
     List:
+    - name: Cavern_Inside
+      guid: c3a4eb38318e344fbd32f9c747af7042
+      id: 2003928189
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 262e5f8d65d066439ef8c68562d95156
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: 630bf2001c59794885252d1f20d7d197
+      - ElementName: Cavern_Inside
+        ObjectType: 1
+        guid: c3a4eb38318e344fbd32f9c747af7042
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\Cavern_Inside
+    - name: Cavern_Top
+      guid: e0039026f5d7c84cbca7b2fad16a4371
+      id: 3918031554
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 262e5f8d65d066439ef8c68562d95156
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: 630bf2001c59794885252d1f20d7d197
+      - ElementName: Cavern_Top
+        ObjectType: 1
+        guid: e0039026f5d7c84cbca7b2fad16a4371
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\Cavern_Top
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
       id: 3803692087
@@ -54,6 +94,23 @@ MonoBehaviour:
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus
+    - name: SFX
+      guid: 630bf2001c59794885252d1f20d7d197
+      id: 393239870
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 262e5f8d65d066439ef8c68562d95156
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: 630bf2001c59794885252d1f20d7d197
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     PathAndIcons:
@@ -66,7 +123,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: b64b3e0021fc044991244d74cae050c8
     GuidInternal: 
-    m_lastTime: -8584862537711076397
+    m_lastTime: -8584859540833392175
     List:
     - name: General
       guid: cd8f8587fae9b84b84d9bc7b4c434973
@@ -94,8 +151,90 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 8c599d4d1df2a74ca82226b84dfb2ee7
     GuidInternal: 
-    m_lastTime: -8584862537713241967
+    m_lastTime: -8584859584531600905
     List: []
+  - PhysicalPath: Events\Music.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+    - ElementName: Music
+      ObjectType: 12
+      guid: ca0c9c1f8e91044baedeba5c8c802e3c
+    ParentPath: Events\Default Work Unit\Music
+    guid: ca0c9c1f8e91044baedeba5c8c802e3c
+    GuidInternal: 
+    m_lastTime: -8584859582265608116
+    List:
+    - name: Basics
+      guid: eb74f28af8ae774d9aa8dc26227d9e04
+      id: 2032813828
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: Music
+        ObjectType: 12
+        guid: ca0c9c1f8e91044baedeba5c8c802e3c
+      - ElementName: Basics
+        ObjectType: 4
+        guid: eb74f28af8ae774d9aa8dc26227d9e04
+      Path: Events\Default Work Unit\Music\Basics
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Music
+      guid: 730636adfe7ee8429f84ba1de44c622d
+      id: 2932040671
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: Music
+        ObjectType: 12
+        guid: ca0c9c1f8e91044baedeba5c8c802e3c
+      - ElementName: Basics
+        ObjectType: 4
+        guid: eb74f28af8ae774d9aa8dc26227d9e04
+      - ElementName: Play_Music
+        ObjectType: 3
+        guid: 730636adfe7ee8429f84ba1de44c622d
+      Path: Events\Default Work Unit\Music\Basics\Play_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Music
+      guid: 376cd7d0d076fc4183d44a9414a40c22
+      id: 2837384057
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: Music
+        ObjectType: 12
+        guid: ca0c9c1f8e91044baedeba5c8c802e3c
+      - ElementName: Basics
+        ObjectType: 4
+        guid: eb74f28af8ae774d9aa8dc26227d9e04
+      - ElementName: Stop_Music
+        ObjectType: 3
+        guid: 376cd7d0d076fc4183d44a9414a40c22
+      Path: Events\Default Work Unit\Music\Basics\Stop_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   - PhysicalPath: Events\SFX.wwu
     PathAndIcons:
     - ElementName: Events
@@ -110,8 +249,226 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\SFX
     guid: 783d0fabd5b2ec448f9dba43f0b99694
     GuidInternal: 
-    m_lastTime: -8584862537713185784
+    m_lastTime: -8584859571512685709
     List:
+    - name: Ambience
+      guid: e28784d69e05734d973336c56b424a30
+      id: 85412153
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: e28784d69e05734d973336c56b424a30
+      Path: Events\Default Work Unit\SFX\Ambience
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Dialogue
+      guid: 340e1562d5892c4a866a63bd45da36c9
+      id: 3930136735
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: Dialogue
+        ObjectType: 4
+        guid: 340e1562d5892c4a866a63bd45da36c9
+      Path: Events\Default Work Unit\SFX\Dialogue
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: NPCs
+      guid: 4cb850d389152d44af12e47bfaefc42a
+      id: 833916109
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: NPCs
+        ObjectType: 4
+        guid: 4cb850d389152d44af12e47bfaefc42a
+      Path: Events\Default Work Unit\SFX\NPCs
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: PC
+      guid: e8e1f35c8383ad4ba23d5deb98627e93
+      id: 1635194334
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: PC
+        ObjectType: 4
+        guid: e8e1f35c8383ad4ba23d5deb98627e93
+      Path: Events\Default Work Unit\SFX\PC
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Ambience
+      guid: 5960680a8e9e7143bd2d0fdcead0f851
+      id: 278617630
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: e28784d69e05734d973336c56b424a30
+      - ElementName: Play_Ambience
+        ObjectType: 3
+        guid: 5960680a8e9e7143bd2d0fdcead0f851
+      Path: Events\Default Work Unit\SFX\Ambience\Play_Ambience
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_Dash
+      guid: d9d3d63b8e40fc4da10e50db5fbadf12
+      id: 2211787386
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: PC
+        ObjectType: 4
+        guid: e8e1f35c8383ad4ba23d5deb98627e93
+      - ElementName: Play_Dash
+        ObjectType: 3
+        guid: d9d3d63b8e40fc4da10e50db5fbadf12
+      Path: Events\Default Work Unit\SFX\PC\Play_Dash
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_Dialogue
+      guid: 6150638ef0181949a1b5ea9ac3d4c2ca
+      id: 267911644
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: Dialogue
+        ObjectType: 4
+        guid: 340e1562d5892c4a866a63bd45da36c9
+      - ElementName: Play_Dialogue
+        ObjectType: 3
+        guid: 6150638ef0181949a1b5ea9ac3d4c2ca
+      Path: Events\Default Work Unit\SFX\Dialogue\Play_Dialogue
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_Dialogue_Next
+      guid: 7e446ad6dcfd144790bc2096034c51ad
+      id: 3529336852
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: Dialogue
+        ObjectType: 4
+        guid: 340e1562d5892c4a866a63bd45da36c9
+      - ElementName: Play_Dialogue_Next
+        ObjectType: 3
+        guid: 7e446ad6dcfd144790bc2096034c51ad
+      Path: Events\Default Work Unit\SFX\Dialogue\Play_Dialogue_Next
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_Pop
+      guid: 3a08277a3f200a4484718bc8cfcbdbc2
+      id: 2990278359
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: PC
+        ObjectType: 4
+        guid: e8e1f35c8383ad4ba23d5deb98627e93
+      - ElementName: Play_Pop
+        ObjectType: 3
+        guid: 3a08277a3f200a4484718bc8cfcbdbc2
+      Path: Events\Default Work Unit\SFX\PC\Play_Pop
+      maxAttenuation: 0
+      maxDuration: 1.0378798
+      minDuration: 0.54757065
+    - name: Play_SMushroom_Grow
+      guid: e676fdce8677954bb5e1e62ca1794a92
+      id: 2543217447
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: NPCs
+        ObjectType: 4
+        guid: 4cb850d389152d44af12e47bfaefc42a
+      - ElementName: Play_SMushroom_Grow
+        ObjectType: 3
+        guid: e676fdce8677954bb5e1e62ca1794a92
+      Path: Events\Default Work Unit\SFX\NPCs\Play_SMushroom_Grow
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Play_Sparks
       guid: 00f8c20c50d939469ae3cb21790c976c
       id: 2858841480
@@ -125,19 +482,19 @@ MonoBehaviour:
       - ElementName: SFX
         ObjectType: 12
         guid: 783d0fabd5b2ec448f9dba43f0b99694
-      - ElementName: Sparks
+      - ElementName: PC
         ObjectType: 4
         guid: e8e1f35c8383ad4ba23d5deb98627e93
       - ElementName: Play_Sparks
         ObjectType: 3
         guid: 00f8c20c50d939469ae3cb21790c976c
-      Path: Events\Default Work Unit\SFX\Sparks\Play_Sparks
+      Path: Events\Default Work Unit\SFX\PC\Play_Sparks
       maxAttenuation: 0
-      maxDuration: 1.1705668
-      minDuration: 0.9543475
-    - name: Sparks
-      guid: e8e1f35c8383ad4ba23d5deb98627e93
-      id: 2439012415
+      maxDuration: 1.2401724
+      minDuration: 0.71495277
+    - name: Stop_Ambience
+      guid: 166cbd7eca0ed4448416ee4055ead498
+      id: 2477713992
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -148,13 +505,39 @@ MonoBehaviour:
       - ElementName: SFX
         ObjectType: 12
         guid: 783d0fabd5b2ec448f9dba43f0b99694
-      - ElementName: Sparks
+      - ElementName: Ambience
         ObjectType: 4
-        guid: e8e1f35c8383ad4ba23d5deb98627e93
-      Path: Events\Default Work Unit\SFX\Sparks
+        guid: e28784d69e05734d973336c56b424a30
+      - ElementName: Stop_Ambience
+        ObjectType: 3
+        guid: 166cbd7eca0ed4448416ee4055ead498
+      Path: Events\Default Work Unit\SFX\Ambience\Stop_Ambience
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Dialogue
+      guid: ce553e84c91b884e96c36a74ab8adad1
+      id: 288905442
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 783d0fabd5b2ec448f9dba43f0b99694
+      - ElementName: Dialogue
+        ObjectType: 4
+        guid: 340e1562d5892c4a866a63bd45da36c9
+      - ElementName: Stop_Dialogue
+        ObjectType: 3
+        guid: ce553e84c91b884e96c36a74ab8adad1
+      Path: Events\Default Work Unit\SFX\Dialogue\Stop_Dialogue
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -167,22 +550,8 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 5f0c040c5050b8409a710875d6e6d9c8
     GuidInternal: 
-    m_lastTime: -8584862537713130099
-    List:
-    - name: Particle_Length
-      guid: 3701512f5988d443bc21e1735a31e3cb
-      id: 3102480586
-      PathAndIcons:
-      - ElementName: Game Parameters
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 5f0c040c5050b8409a710875d6e6d9c8
-      - ElementName: Particle_Length
-        ObjectType: 13
-        guid: 3701512f5988d443bc21e1735a31e3cb
-      Path: Game Parameters\Default Work Unit\Particle_Length
+    m_lastTime: -8584859561147817355
+    List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
@@ -195,8 +564,104 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 4738736669f0154d8274a44d6cb8cf7b
     GuidInternal: 
-    m_lastTime: -8584863324636778952
-    List: []
+    m_lastTime: -8584859530751117360
+    List:
+    - name: Ambiences
+      guid: 233653c6c1e63d49bd8ee4533c21d357
+      id: 1017660616
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 4738736669f0154d8274a44d6cb8cf7b
+      - ElementName: Ambiences
+        ObjectType: 4
+        guid: 233653c6c1e63d49bd8ee4533c21d357
+      Path: States\Default Work Unit\Ambiences
+      values: []
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Ambiences
+      guid: 8b9e5c3240c51c47a06bedf604274181
+      id: 1017660616
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 4738736669f0154d8274a44d6cb8cf7b
+      - ElementName: Ambiences
+        ObjectType: 4
+        guid: 233653c6c1e63d49bd8ee4533c21d357
+      - ElementName: Ambiences
+        ObjectType: 9
+        guid: 8b9e5c3240c51c47a06bedf604274181
+      Path: States\Default Work Unit\Ambiences\Ambiences
+      values:
+      - name: Cavern_Inside
+        guid: 4dce8fa7906bea47ac2404aa7a5b89f5
+        id: 2003928189
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 4738736669f0154d8274a44d6cb8cf7b
+        - ElementName: Ambiences
+          ObjectType: 4
+          guid: 233653c6c1e63d49bd8ee4533c21d357
+        - ElementName: Ambiences
+          ObjectType: 9
+          guid: 8b9e5c3240c51c47a06bedf604274181
+        - ElementName: Cavern_Inside
+          ObjectType: 8
+          guid: 4dce8fa7906bea47ac2404aa7a5b89f5
+      - name: Cavern_Top
+        guid: 25a92e45cd56bd44980179b1d107ea8f
+        id: 3918031554
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 4738736669f0154d8274a44d6cb8cf7b
+        - ElementName: Ambiences
+          ObjectType: 4
+          guid: 233653c6c1e63d49bd8ee4533c21d357
+        - ElementName: Ambiences
+          ObjectType: 9
+          guid: 8b9e5c3240c51c47a06bedf604274181
+        - ElementName: Cavern_Top
+          ObjectType: 8
+          guid: 25a92e45cd56bd44980179b1d107ea8f
+      - name: None
+        guid: 386d65555469d8419672939f97083a2c
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 4738736669f0154d8274a44d6cb8cf7b
+        - ElementName: Ambiences
+          ObjectType: 4
+          guid: 233653c6c1e63d49bd8ee4533c21d357
+        - ElementName: Ambiences
+          ObjectType: 9
+          guid: 8b9e5c3240c51c47a06bedf604274181
+        - ElementName: None
+          ObjectType: 8
+          guid: 386d65555469d8419672939f97083a2c
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     PathAndIcons:
@@ -223,10 +688,10 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: f443cb6b54c4b84c8a1cbd607cd7b8d9
     GuidInternal: 
-    m_lastTime: -8584863324636756690
+    m_lastTime: -8584859530651926470
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 01000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000e00000014000000170000005301000054010000aa010000ab010000ac010000f9010000a1020000a2020000f20200008c030000d8030000230400000c0b0000
+  ExpandedWaapiItemIds: 010000000300000004000000050000000600000007000000090000000a0000000b0000000c0000000e000000140000001700000018000000190000001d000000240000004c0000004d0000004e000000fa000000fb000000fc0000005301000054010000aa010000ab010000ac010000f9010000a1020000a2020000df020000e0020000f20200002c0300008c030000d8030000230400000c0b0000b9890100
   AutoSyncSelection: 1
   autoPopulateEnabled: 1
   currentDataSource: 0

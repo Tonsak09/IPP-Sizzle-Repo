@@ -9,14 +9,15 @@
 							<ObjectRef Name="Play_Sparks" ID="{0CC2F800-D950-4639-9AE3-CB21790C976C}" WorkUnitID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}"/>
 							<Position X="0" Y="0"/>
 						</Module>
+						<Module>
+							<ObjectRef Name="Play_Pop" ID="{7A27083A-203F-440A-8471-8BC8CFCBDBC2}" WorkUnitID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}"/>
+							<Position X="0" Y="1"/>
+						</Module>
 					</ModuleList>
-					<RTPCValueList ShowAll="true">
-						<RTPCValue>
-							<GameParameterRef Name="Particle_Length" ID="{2F510137-8859-43D4-BC21-E1735A31E3CB}"/>
-							<Value>0</Value>
-						</RTPCValue>
-					</RTPCValueList>
-					<CurrentStateList ShowAll="true"/>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="Cavern_Inside" ID="{A78FCE4D-6B90-47EA-AC24-04AA7A5B89F5}"/>
+					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>
 			</ChildrenList>

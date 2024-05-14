@@ -1,8 +1,41 @@
 Event	ID	Name			Wwise Object Path	Notes
-	2858841480	Play_Sparks			\Default Work Unit\SFX\Sparks\Play_Sparks	
+	267911644	Play_Dialogue			\Default Work Unit\SFX\Dialogue\Play_Dialogue	
+	278617630	Play_Ambience			\Default Work Unit\SFX\Ambience\Play_Ambience	
+	288905442	Stop_Dialogue			\Default Work Unit\SFX\Dialogue\Stop_Dialogue	
+	2211787386	Play_Dash			\Default Work Unit\SFX\PC\Play_Dash	
+	2477713992	Stop_Ambience			\Default Work Unit\SFX\Ambience\Stop_Ambience	
+	2543217447	Play_SMushroom_Grow			\Default Work Unit\SFX\NPCs\Play_SMushroom_Grow	
+	2837384057	Stop_Music			\Default Work Unit\Music\Basics\Stop_Music	
+	2858841480	Play_Sparks			\Default Work Unit\SFX\PC\Play_Sparks	
+	2932040671	Play_Music			\Default Work Unit\Music\Basics\Play_Music	
+	2990278359	Play_Pop			\Default Work Unit\SFX\PC\Play_Pop	
+	3529336852	Play_Dialogue_Next			\Default Work Unit\SFX\Dialogue\Play_Dialogue_Next	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	1017660616	Ambiences			\Default Work Unit\Ambiences\Ambiences	
+
+State	ID	Name	State Group			Notes
+	748895195	None	Ambiences			
+	2003928189	Cavern_Inside	Ambiences			
+	3918031554	Cavern_Top	Ambiences			
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	393239870	SFX			\Default Work Unit\Master Audio Bus\SFX	
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	2003928189	Cavern_Inside			\Default Work Unit\Master Audio Bus\SFX\Cavern_Inside	
+	3918031554	Cavern_Top			\Default Work Unit\Master Audio Bus\SFX\Cavern_Top	
+
+Effect plug-ins	ID	Name	Type				Notes
+	868598368	Have_U_Ever_Been_Outside (Custom)	Wwise RoomVerb			
+	942477861	Have_U_Ever_Been_Outside (Custom)	Wwise RoomVerb			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	293812897	Fireballs - Fire Ball 01	J:\GitRepositories\IPP-Sizzle-Repo\IPP Sizzle\IPP Sizzle_WwiseProject\.cache\Mac\SFX\Fireballs - Fire Ball 01_D4C07EA9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Spark Burst\Fireballs - Fire Ball 01		524384
-	633906341	Fireballs - Fire Ball 03	J:\GitRepositories\IPP-Sizzle-Repo\IPP Sizzle\IPP Sizzle_WwiseProject\.cache\Mac\SFX\Fireballs - Fire Ball 03_D4C07EA9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Spark Burst\Fireballs - Fire Ball 03		557152
-	715333636	Fireballs - Fire Ball 02	J:\GitRepositories\IPP-Sizzle-Repo\IPP Sizzle\IPP Sizzle_WwiseProject\.cache\Mac\SFX\Fireballs - Fire Ball 02_D4C07EA9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Spark Burst\Fireballs - Fire Ball 02		643168
+	33650004	SCIEnrg_Synth Beeps_PSE_OS_v7wuJ	J:\GitRepositories\IPP-Sizzle-Repo\IPP Sizzle\IPP Sizzle_WwiseProject\.cache\Mac\SFX\SCIEnrg_Synth Beeps_PSE_OS_v7wuJ_1F72B928.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PC\Pops\SCIEnrg_Synth Beeps_PSE_OS_v7wuJ		13767
+	252463775	SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(2)	J:\GitRepositories\IPP-Sizzle-Repo\IPP Sizzle\IPP Sizzle_WwiseProject\.cache\Mac\SFX\SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(2)_BA181EDD.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PC\Pops\SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(2)		10335
+	283673616	SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(3)	J:\GitRepositories\IPP-Sizzle-Repo\IPP Sizzle\IPP Sizzle_WwiseProject\.cache\Mac\SFX\SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(3)_E37DC06C.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PC\Pops\SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(3)		6918
+	293812897	Fireballs - Fire Ball 01	J:\GitRepositories\IPP-Sizzle-Repo\IPP Sizzle\IPP Sizzle_WwiseProject\.cache\Mac\SFX\Fireballs - Fire Ball 01_6E98EF39.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PC\Spark Burst\Fireballs - Fire Ball 01		68776
+	633906341	Fireballs - Fire Ball 03	J:\GitRepositories\IPP-Sizzle-Repo\IPP Sizzle\IPP Sizzle_WwiseProject\.cache\Mac\SFX\Fireballs - Fire Ball 03_6E98EF39.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PC\Spark Burst\Fireballs - Fire Ball 03		70189
+	715333636	Fireballs - Fire Ball 02	J:\GitRepositories\IPP-Sizzle-Repo\IPP Sizzle\IPP Sizzle_WwiseProject\.cache\Mac\SFX\Fireballs - Fire Ball 02_6E98EF39.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PC\Spark Burst\Fireballs - Fire Ball 02		88220
 

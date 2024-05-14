@@ -5,7 +5,21 @@
 			<ChildrenList>
 				<SoundBank Name="General" ID="{87858FCD-E9FA-4BB8-84D9-BC7B4C434973}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Music" ID="{D0D76C37-76D0-41FC-83D4-4A9414A40C22}" WorkUnitID="{1F9C0CCA-918E-4B04-AEDE-BA5C8C802E3C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Music" ID="{AD360673-7EFE-42E8-9F84-BA1DE44C622D}" WorkUnitID="{1F9C0CCA-918E-4B04-AEDE-BA5C8C802E3C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Ambience" ID="{0A686059-9E8E-4371-BD2D-0FDCEAD0F851}" WorkUnitID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Pop" ID="{7A27083A-203F-440A-8471-8BC8CFCBDBC2}" WorkUnitID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Ambience" ID="{7EBD6C16-0ECA-44D4-8416-EE4055EAD498}" WorkUnitID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Sparks" ID="{0CC2F800-D950-4639-9AE3-CB21790C976C}" WorkUnitID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Dialogue_Next" ID="{D66A447E-FDDC-4714-90BC-2096034C51AD}" WorkUnitID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SFX" ID="{00F20B63-591C-4879-8525-2D1F20D7D197}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Dialogue" ID="{8E635061-18F0-4919-A1B5-EA9AC3D4C2CA}" WorkUnitID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_SMushroom_Grow" ID="{CEFD76E6-7786-4B95-B5E1-E62CA1794A92}" WorkUnitID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Cavern_Top" ID="{269003E0-D7F5-4CC8-BCA7-B2FAD16A4371}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Dash" ID="{3BD6D3D9-408E-4DFC-A10E-50DB5FBADF12}" WorkUnitID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Dialogue" ID="{843E55CE-1BC9-4E88-96C3-6A74AB8ADAD1}" WorkUnitID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Cavern_Inside" ID="{38EBA4C3-8E31-4F34-BD32-F9C747AF7042}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
