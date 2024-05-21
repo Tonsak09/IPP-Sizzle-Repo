@@ -11,14 +11,36 @@ public abstract class Chargeable : MonoBehaviour
     [SerializeField] protected float thresholdChargeAmount;
     [SerializeField] float chargeRate;
     [SerializeField] float depleteRate;
-
+    [SerializeField] FinishChargeEvent finishChargeType;
+    [Space]
     [SerializeField] protected float charge = 0.0f;
-    
+
 
     public virtual void Charge(Transform source)
     {
+        switch (finishChargeType)
+        {
+            case FinishChargeEvent.CLAMP_CHARGE:
+                ClampCharge();
+                break;
+            case FinishChargeEvent.OVERFLOW_CHARGE:
+                OverFlowCharge();
+                break;
+            case FinishChargeEvent.STOP_CHARGE:
+                StopCharge();
+                break;
+        }
+    }
+
+    
+
+    /// <summary>
+    /// Only allows charge to reach given max amount
+    /// </summary>
+    private void ClampCharge()
+    {
         float delta = chargeRate * Time.deltaTime;
-        if(charge + delta > maxChargeAmount)
+        if (charge + delta > maxChargeAmount)
         {
             charge = maxChargeAmount;
             return;
@@ -27,9 +49,45 @@ public abstract class Chargeable : MonoBehaviour
         charge += delta;
     }
 
+    /// <summary>
+    /// Lets charge overflow max charge amount 
+    /// </summary>
+    private void OverFlowCharge()
+    {
+        charge += chargeRate * Time.deltaTime;
+    }
+
+    /// <summary>
+    /// Once threshold has been met stop charge logic and consider this 
+    /// chargeable as unlocked 
+    /// </summary>
+    private void StopCharge()
+    {
+        if (IsUnlocked())
+            return;
+    }
+
+    /// <summary>
+    /// Reduce chage with minimum of 0 charge 
+    /// </summary>
     protected virtual void DepleteCharge()
     {
+        // Don't allow depletion if for StopCharge
+        // and threshold met 
+
+        if (finishChargeType == FinishChargeEvent.STOP_CHARGE)
+        {
+            if (IsUnlocked())
+                return;
+        }
+
         charge -= depleteRate * Time.deltaTime;
+        charge = Mathf.Max(charge, 0); // Clamp at 0
+    }
+
+    public bool IsUnlocked()
+    {
+        return charge >= thresholdChargeAmount;
     }
 
     private enum FinishChargeEvent
