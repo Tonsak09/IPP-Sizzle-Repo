@@ -45,10 +45,10 @@ public class Elevator : MonoBehaviour
         switch (state)
         {
             case ElevatorState.IDLE_TOP:
-                Idle(batteryToDown, topPos, ElevatorState.MOVE_TO_BOTTOM);
+                Idle(batteryToDown, batteryToUp, topPos, ElevatorState.MOVE_TO_BOTTOM);
                 break;
             case ElevatorState.IDLE_BOTTOM:
-                Idle(batteryToUp, bottomPos, ElevatorState.MOVE_TO_TOP);
+                Idle(batteryToUp, batteryToDown, bottomPos, ElevatorState.MOVE_TO_TOP);
                 break;
             case ElevatorState.MOVE_TO_BOTTOM:
                 Move(topPos, bottomPos);
@@ -60,18 +60,32 @@ public class Elevator : MonoBehaviour
     }
 
 
-    private void Idle(ElevatorBattery battery, Vector3 checkOrigin, ElevatorState nextMoveState)
+    private void Idle(
+        ElevatorBattery batterySame, ElevatorBattery batteryOpposite, 
+        Vector3 checkOrigin,
+        ElevatorState nextMoveState)
     {
         // Update charge level visual 
 
         // Check if right battery is charged and
         // player is in correct area 
-        if (battery.IsUnlocked() && (Vector3.Distance(sizzle.position, this.transform.position + checkOrigin) <= checkSizzleRadius))
+        if(batterySame.IsUnlocked())
         {
-            battery.ResetChargeable();
+            // Brings Sizzle to next location
+            if(Vector3.Distance(sizzle.position, this.transform.position + checkOrigin) <= checkSizzleRadius)
+            {
+                batteryOpposite.ResetChargeable();
+                batterySame.ResetChargeable();
+                state = nextMoveState;
+            }
+        }
+        else if(batteryOpposite.IsUnlocked())
+        {
+            // Beckons platform to correct position 
+            batteryOpposite.ResetChargeable();
+            batterySame.ResetChargeable();
             state = nextMoveState;
         }
-            
     }
 
     /// <summary>
