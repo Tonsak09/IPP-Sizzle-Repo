@@ -11,6 +11,9 @@ public class ChargeableHunt : ChargeableSet
 
     private void Update()
     {
+        if (textMesh == null)
+            return;
+
         if(AllAmberUnlocked())
         {
             textMesh.text = "Complete!";

@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElevatorBattery : MonoBehaviour
+public class ElevatorBattery : Chargeable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool holdUnlocked; 
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // Only at unlocked event not continous 
+        if(IsUnlocked() && holdUnlocked == false)
+        {
+            // Play sound 
+
+            // Animation 
+        }
+
+        holdUnlocked = IsUnlocked();
     }
+
+    
 }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
-    [Header("References")]
+    [Header("Batteries")]
     [SerializeField] ElevatorBattery batteryToDown;
     [SerializeField] ElevatorBattery batteryToUp;
-    [SerializeField] Transform platform;
 
     [Header("Animation")]
+    [SerializeField] Transform platform;
     [SerializeField] float animSpeed;
     [SerializeField] Vector3 topPos;
     [SerializeField] Vector3 bottomPos;
@@ -45,10 +45,10 @@ public class Elevator : MonoBehaviour
         switch (state)
         {
             case ElevatorState.IDLE_TOP:
-                Idle(topPos);
+                Idle(batteryToDown, topPos, ElevatorState.MOVE_TO_BOTTOM);
                 break;
             case ElevatorState.IDLE_BOTTOM:
-                Idle(bottomPos);
+                Idle(batteryToUp, bottomPos, ElevatorState.MOVE_TO_TOP);
                 break;
             case ElevatorState.MOVE_TO_BOTTOM:
                 Move(topPos, bottomPos);
@@ -60,9 +60,18 @@ public class Elevator : MonoBehaviour
     }
 
 
-    private void Idle(Vector3 checkOrigin)
+    private void Idle(ElevatorBattery battery, Vector3 checkOrigin, ElevatorState nextMoveState)
     {
+        // Update charge level visual 
 
+        // Check if right battery is charged and
+        // player is in correct area 
+        if (battery.IsUnlocked() && (Vector3.Distance(sizzle.position, this.transform.position + checkOrigin) <= checkSizzleRadius))
+        {
+            battery.ResetChargeable();
+            state = nextMoveState;
+        }
+            
     }
 
     /// <summary>
@@ -76,6 +85,8 @@ public class Elevator : MonoBehaviour
     {
         Vector3 dir = (target - origin).normalized;
         Vector3 next = platform.position + dir * animSpeed * Time.deltaTime;
+
+        platform.transform.position = next;
 
         bool reachedTarget = false;
         switch (state)
@@ -99,9 +110,11 @@ public class Elevator : MonoBehaviour
             switch (state)
             {
                 case ElevatorState.MOVE_TO_BOTTOM:
+                    platform.position = this.transform.position + bottomPos;
                     state = ElevatorState.IDLE_BOTTOM;
                     break;
                 case ElevatorState.MOVE_TO_TOP:
+                    platform.position = this.transform.position + topPos;
                     state = ElevatorState.IDLE_TOP;
                     break;
             }

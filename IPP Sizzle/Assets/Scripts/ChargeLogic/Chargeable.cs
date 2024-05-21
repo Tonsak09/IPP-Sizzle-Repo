@@ -65,6 +65,8 @@ public abstract class Chargeable : MonoBehaviour
     {
         if (IsUnlocked())
             return;
+
+        charge += chargeRate * Time.deltaTime;
     }
 
     /// <summary>
@@ -83,6 +85,14 @@ public abstract class Chargeable : MonoBehaviour
 
         charge -= depleteRate * Time.deltaTime;
         charge = Mathf.Max(charge, 0); // Clamp at 0
+    }
+
+    /// <summary>
+    /// Resets this chargeable
+    /// </summary>
+    public virtual void ResetChargeable()
+    {
+        charge = 0;
     }
 
     public bool IsUnlocked()

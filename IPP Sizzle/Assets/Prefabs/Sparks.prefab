@@ -4912,7 +4912,7 @@ GameObject:
   - component: {fileID: -7818865663040720495}
   - component: {fileID: -519248508341979958}
   m_Layer: 0
-  m_Name: SparksEmitter
+  m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
