@@ -24,7 +24,6 @@ public class Elevator : MonoBehaviour
 
     private Transform sizzle;
     private SizzleController sizzleController;
-    private Vector3 sizzleOffset; // Offset from platform center at start of animation 
 
     // If sizzle is being moved or elevator is being corrected
     private bool isBeckoned; 
@@ -91,13 +90,14 @@ public class Elevator : MonoBehaviour
                 print("Locking Sizzle controller");
                 sizzleController.SetMovementLocks(new SizzleController.MovementLocks(false, true));
 
-                sizzleOffset = sizzle.position - platform.position;
                 isBeckoned = false;
 
                 state = nextMoveState;
+                return;
             }
         }
-        else if(batteryOpposite.IsUnlocked())
+
+        if(batteryOpposite.IsUnlocked())
         {
             // Beckons platform to correct position 
             batteryOpposite.ResetChargeable();
@@ -124,7 +124,7 @@ public class Elevator : MonoBehaviour
         platform.transform.position = next;
 
         if(!isBeckoned)
-            sizzle.position = next + sizzleOffset;
+            sizzle.position = new Vector3(sizzle.position.x, next.y, sizzle.position.z);
 
         bool reachedTarget = false;
         switch (state)

@@ -124,6 +124,12 @@ public class SizzleController : MonoBehaviour
         SparkLogic();
         ProcessUserInput();
 
+        UpdateIsAirborne();
+
+        if (isAirborne)
+        {
+            StartCoroutine(FallCo());
+        }
     }
 
     private void ProcessUserInput()
@@ -330,7 +336,7 @@ public class SizzleController : MonoBehaviour
     private void UpdateIsAirborne()
     {
         // Creates a small check at pivot 
-        isAirborne = !Physics.CheckSphere(this.transform.position, groundCheckRadius, ground);
+        isAirborne = !Physics.CheckSphere(this.transform.position + Vector3.up * groundCheckRadius * 0.5f, groundCheckRadius, ground);
     }
 
     private IEnumerator DashCo()
@@ -536,8 +542,8 @@ public class SizzleController : MonoBehaviour
                 Gizmos.DrawWireSphere(this.transform.position + dir * unpassTurnCheckDistance, unpassTurnCheckRadius);
                 break;
             case SizzleGizmosType.GROUND_CHECK:
-                Gizmos.DrawSphere(this.transform.position + dir * groundOriginCheckDistance, groundCheckRadius);
-                Gizmos.DrawSphere(this.transform.position + dir * groundTargetCheckDistance, groundCheckRadius);
+                Gizmos.DrawSphere(this.transform.position + dir * groundOriginCheckDistance + Vector3.up * groundCheckRadius, groundCheckRadius);
+                Gizmos.DrawSphere(this.transform.position + dir * groundTargetCheckDistance + Vector3.up * groundCheckRadius, groundCheckRadius);
                 break;
             case SizzleGizmosType.DASH_TARGET:
                 Gizmos.color = Color.yellow;
