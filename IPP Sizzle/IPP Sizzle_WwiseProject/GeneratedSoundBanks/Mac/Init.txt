@@ -1,5 +1,22 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	1017660616	Ambiences			\Default Work Unit\Ambiences\Ambiences	
+
+State	ID	Name	State Group			Notes
+	748895195	None	Ambiences			
+	2003928189	Cavern_Inside	Ambiences			
+	3918031554	Cavern_Top	Ambiences			
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
+	393239870	SFX			\Default Work Unit\Master Audio Bus\SFX	
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	2003928189	Cavern_Inside			\Default Work Unit\Master Audio Bus\SFX\Cavern_Inside	
+	3918031554	Cavern_Top			\Default Work Unit\Master Audio Bus\SFX\Cavern_Top	
+
+Effect plug-ins	ID	Name	Type				Notes
+	868598368	Have_U_Ever_Been_Outside (Custom)	Wwise RoomVerb			
+	942477861	Have_U_Ever_Been_Outside (Custom)	Wwise RoomVerb			
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			

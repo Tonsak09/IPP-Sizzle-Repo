@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{0C040C5F-5050-40B8-9A71-0875D6E6D9C8}" SchemaVersion="119">
 	<GameParameters>
-		<WorkUnit Name="Default Work Unit" ID="{0C040C5F-5050-40B8-9A71-0875D6E6D9C8}" PersistMode="Standalone">
-			<ChildrenList>
-				<GameParameter Name="Particle_Length" ID="{2F510137-8859-43D4-BC21-E1735A31E3CB}">
-					<PropertyList>
-						<Property Name="BindToBuiltInParam" Type="int16" Value="1"/>
-						<Property Name="InitialValue" Type="Real64" Value="0"/>
-					</PropertyList>
-				</GameParameter>
-			</ChildrenList>
-		</WorkUnit>
+		<WorkUnit Name="Default Work Unit" ID="{0C040C5F-5050-40B8-9A71-0875D6E6D9C8}" PersistMode="Standalone"/>
 	</GameParameters>
 </WwiseDocument>

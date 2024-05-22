@@ -9,6 +9,114 @@
 							<ObjectRef Name="System" ID="{56780A48-820F-4F63-B8A1-10177A0C62A0}" WorkUnitID="{63422370-B402-4C62-87BC-DC7C27590BAE}"/>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="SFX" ID="{00F20B63-591C-4879-8525-2D1F20D7D197}">
+							<PropertyList>
+								<Property Name="UserAuxSendVolume0" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UserAuxSendVolume1" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList/>
+							<ChildrenList>
+								<AuxBus Name="Cavern_Inside" ID="{38EBA4C3-8E31-4F34-BD32-F9C747AF7042}">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+										<Property Name="ListenerRelativeRouting" Type="bool" Value="True"/>
+									</PropertyList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{2B69E8E1-C9C1-4DDB-BA6E-77EFED15E2E9}" ShortID="886260300">
+														<ReferenceList>
+															<Reference Name="Effect">
+																<Custom CreatedFrom="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}">
+																	<Effect Name="Have_U_Ever_Been_Outside (Custom)" ID="{8B43FE60-FC91-45B4-8BA7-132C0CE56A88}" ShortID="868598368" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																		<PropertyList>
+																			<Property Name="DecayTime" Type="Real32" Value="1"/>
+																			<Property Name="Density" Type="Real32" Value="50"/>
+																			<Property Name="ERLevel" Type="Real32" Value="-18"/>
+																			<Property Name="ERPattern" Type="int32" Value="29"/>
+																			<Property Name="Filter1Freq" Type="Real32" Value="210"/>
+																			<Property Name="Filter1Gain" Type="Real32" Value="1.5"/>
+																			<Property Name="Filter2Freq" Type="Real32" Value="6830"/>
+																			<Property Name="Filter2Gain" Type="Real32" Value="-7.5"/>
+																			<Property Name="Filter2Q" Type="Real32" Value="0.65"/>
+																			<Property Name="Filter3Freq" Type="Real32" Value="8440"/>
+																			<Property Name="Filter3Gain" Type="Real32" Value="-4"/>
+																			<Property Name="HFDamping" Type="Real32" Value="5.05"/>
+																			<Property Name="PreDelay" Type="Real32" Value="145"/>
+																			<Property Name="Quality" Type="int32" Value="12"/>
+																			<Property Name="ReverbLevel" Type="Real32" Value="-37"/>
+																			<Property Name="RoomSize" Type="Real32" Value="34"/>
+																			<Property Name="StereoWidth" Type="Real32" Value="28"/>
+																		</PropertyList>
+																	</Effect>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</AuxBus>
+								<AuxBus Name="Cavern_Top" ID="{269003E0-D7F5-4CC8-BCA7-B2FAD16A4371}">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+										<Property Name="ListenerRelativeRouting" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList/>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{07B8F898-ACDC-4884-B3FA-A3C0A3E2D398}" ShortID="1049040630">
+														<ReferenceList>
+															<Reference Name="Effect">
+																<Custom CreatedFrom="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}">
+																	<Effect Name="Have_U_Ever_Been_Outside (Custom)" ID="{83B6035C-D826-4216-8359-3AA76EBA5F25}" ShortID="942477861" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																		<PropertyList>
+																			<Property Name="DecayTime" Type="Real32" Value="1"/>
+																			<Property Name="Density" Type="Real32" Value="50"/>
+																			<Property Name="ERLevel" Type="Real32" Value="-18"/>
+																			<Property Name="ERPattern" Type="int32" Value="29"/>
+																			<Property Name="Filter1Freq" Type="Real32" Value="210"/>
+																			<Property Name="Filter1Gain" Type="Real32" Value="1.5"/>
+																			<Property Name="Filter2Freq" Type="Real32" Value="6830"/>
+																			<Property Name="Filter2Gain" Type="Real32" Value="-7.5"/>
+																			<Property Name="Filter2Q" Type="Real32" Value="0.65"/>
+																			<Property Name="Filter3Freq" Type="Real32" Value="8440"/>
+																			<Property Name="Filter3Gain" Type="Real32" Value="-4"/>
+																			<Property Name="HFDamping" Type="Real32" Value="5.05"/>
+																			<Property Name="PreDelay" Type="Real32" Value="145"/>
+																			<Property Name="Quality" Type="int32" Value="12"/>
+																			<Property Name="ReverbLevel" Type="Real32" Value="-37"/>
+																			<Property Name="RoomSize" Type="Real32" Value="73"/>
+																			<Property Name="StereoWidth" Type="Real32" Value="28"/>
+																		</PropertyList>
+																	</Effect>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</AuxBus>
+							</ChildrenList>
+						</Bus>
+					</ChildrenList>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>

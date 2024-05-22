@@ -3,7 +3,7 @@
 	<Events>
 		<WorkUnit Name="SFX" ID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}" OwnerID="{4D9D598C-F21D-4CA7-A822-26B84DFB2EE7}" PersistMode="Nested">
 			<ChildrenList>
-				<Folder Name="Sparks" ID="{5CF3E1E8-8383-4BAD-A23D-5DEB98627E93}" ShortID="50285310">
+				<Folder Name="PC" ID="{5CF3E1E8-8383-4BAD-A23D-5DEB98627E93}" ShortID="50285310">
 					<ChildrenList>
 						<Event Name="Play_Sparks" ID="{0CC2F800-D950-4639-9AE3-CB21790C976C}">
 							<ChildrenList>
@@ -29,6 +29,36 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Play_Pop" ID="{7A27083A-203F-440A-8471-8BC8CFCBDBC2}">
+							<ChildrenList>
+								<Action Name="" ID="{E6A76046-9129-447D-8937-A9006C2D25F4}" ShortID="45703255">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Pops" ID="{58327446-FC24-4DD1-9BB9-57DF5C7AB3C8}" WorkUnitID="{87B65CD4-90EE-4336-AE3A-F5F64C2995F8}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Dash" ID="{3BD6D3D9-408E-4DFC-A10E-50DB5FBADF12}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Dialogue" ID="{62150E34-89D5-4A2C-866A-63BD45DA36C9}" ShortID="713062464">
+					<ChildrenList>
+						<Event Name="Play_Dialogue" ID="{8E635061-18F0-4919-A1B5-EA9AC3D4C2CA}"/>
+						<Event Name="Play_Dialogue_Next" ID="{D66A447E-FDDC-4714-90BC-2096034C51AD}"/>
+						<Event Name="Stop_Dialogue" ID="{843E55CE-1BC9-4E88-96C3-6A74AB8ADAD1}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="NPCs" ID="{D350B84C-1589-442D-AF12-E47BFAEFC42A}" ShortID="439252781">
+					<ChildrenList>
+						<Event Name="Play_SMushroom_Grow" ID="{CEFD76E6-7786-4B95-B5E1-E62CA1794A92}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Ambience" ID="{D68487E2-059E-4D73-9733-36C56B424A30}" ShortID="435339109">
+					<ChildrenList>
+						<Event Name="Play_Ambience" ID="{0A686059-9E8E-4371-BD2D-0FDCEAD0F851}"/>
+						<Event Name="Stop_Ambience" ID="{7EBD6C16-0ECA-44D4-8416-EE4055EAD498}"/>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

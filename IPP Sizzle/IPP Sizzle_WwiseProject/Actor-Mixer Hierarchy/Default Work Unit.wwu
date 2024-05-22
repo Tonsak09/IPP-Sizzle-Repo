@@ -9,28 +9,33 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A971F479-8310-4713-A8A7-A8ECEE05E9A4}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}"/>
+							<ObjectRef Name="SFX" ID="{00F20B63-591C-4879-8525-2D1F20D7D197}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<RandomSequenceContainer Name="Spark Burst" ID="{F5A13838-96ED-4563-885D-3A8E53C9A77E}" ShortID="623927717">
-							<PropertyList>
-								<Property Name="Pitch" Type="int32">
-									<ValueList>
-										<Value>1820</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A971F479-8310-4713-A8A7-A8ECEE05E9A4}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}"/>
-								</Reference>
-							</ReferenceList>
+						<Folder Name="PC" ID="{4B2E4E2B-4CF0-4F28-AB03-E740767E8B9D}" ShortID="713988930">
 							<ChildrenList>
-								<Sound Name="Fireballs - Fire Ball 01" ID="{3BCA064D-57D8-42AC-B097-43A2DD6DEB57}" ShortID="101464454">
+								<RandomSequenceContainer Name="Spark Burst" ID="{F5A13838-96ED-4563-885D-3A8E53C9A77E}" ShortID="623927717">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>2020</Value>
+											</ValueList>
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{24037974-E07C-4124-B8C3-F50B6C15055E}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="300"/>
+															<Property Name="Min" Type="Real64" Value="-300"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A971F479-8310-4713-A8A7-A8ECEE05E9A4}"/>
@@ -40,22 +45,111 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="Fireballs - Fire Ball 01" ID="{32C5D902-34AB-46B8-AE79-1C1A468127F2}">
-											<PropertyList>
-												<Property Name="ChannelConfigOverride" Type="int64" Value="49410"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Fireballs - Fire Ball 01.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="293812897"/>
-											</MediaIDList>
-										</AudioFileSource>
+										<Sound Name="Fireballs - Fire Ball 01" ID="{3BCA064D-57D8-42AC-B097-43A2DD6DEB57}" ShortID="101464454">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A971F479-8310-4713-A8A7-A8ECEE05E9A4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Fireballs - Fire Ball 01" ID="{32C5D902-34AB-46B8-AE79-1C1A468127F2}">
+													<PropertyList>
+														<Property Name="ChannelConfigOverride" Type="int64" Value="49410"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Fireballs - Fire Ball 01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="293812897"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Fireballs - Fire Ball 01" ID="{32C5D902-34AB-46B8-AE79-1C1A468127F2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Fireballs - Fire Ball 02" ID="{1E090474-B3FE-4086-92E9-CE90C6B8C5CE}" ShortID="212693544">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A971F479-8310-4713-A8A7-A8ECEE05E9A4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Fireballs - Fire Ball 02" ID="{2F1534AB-3E86-428E-86EE-70B4400B7B96}">
+													<PropertyList>
+														<Property Name="ChannelConfigOverride" Type="int64" Value="49410"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Fireballs - Fire Ball 02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="715333636"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Fireballs - Fire Ball 02" ID="{2F1534AB-3E86-428E-86EE-70B4400B7B96}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Fireballs - Fire Ball 03" ID="{CD270D94-3601-4FF9-8FD7-5F6F86304B4E}" ShortID="339555913">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A971F479-8310-4713-A8A7-A8ECEE05E9A4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Fireballs - Fire Ball 03" ID="{355F6C4F-8F1A-4CD9-9943-900A2FD85551}">
+													<PropertyList>
+														<Property Name="ChannelConfigOverride" Type="int64" Value="49410"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Fireballs - Fire Ball 03.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="633906341"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Fireballs - Fire Ball 03" ID="{355F6C4F-8F1A-4CD9-9943-900A2FD85551}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Fireballs - Fire Ball 01" ID="{32C5D902-34AB-46B8-AE79-1C1A468127F2}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Fireballs - Fire Ball 02" ID="{1E090474-B3FE-4086-92E9-CE90C6B8C5CE}" ShortID="212693544">
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Pops" ID="{58327446-FC24-4DD1-9BB9-57DF5C7AB3C8}" ShortID="380408877">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>5</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{757EECAE-45EC-4688-A006-9BA544D4C61B}">
+														<PropertyList>
+															<Property Name="Max" Type="Real64" Value="429"/>
+															<Property Name="Min" Type="Real64" Value="-76"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A971F479-8310-4713-A8A7-A8ECEE05E9A4}"/>
@@ -65,48 +159,110 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="Fireballs - Fire Ball 02" ID="{2F1534AB-3E86-428E-86EE-70B4400B7B96}">
+										<Sound Name="SCIEnrg_Synth Beeps_PSE_OS_v7wuJ" ID="{E0EF8603-B358-49B0-ADBC-AD4B6254B091}" ShortID="650756023">
 											<PropertyList>
-												<Property Name="ChannelConfigOverride" Type="int64" Value="49410"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>150</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Fireballs - Fire Ball 02.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="715333636"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Fireballs - Fire Ball 02" ID="{2F1534AB-3E86-428E-86EE-70B4400B7B96}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Fireballs - Fire Ball 03" ID="{CD270D94-3601-4FF9-8FD7-5F6F86304B4E}" ShortID="339555913">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A971F479-8310-4713-A8A7-A8ECEE05E9A4}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Fireballs - Fire Ball 03" ID="{355F6C4F-8F1A-4CD9-9943-900A2FD85551}">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A971F479-8310-4713-A8A7-A8ECEE05E9A4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="SCIEnrg_Synth Beeps_PSE_OS_v7wuJ" ID="{FA7D73C5-BBDD-4553-A07A-3DBA6E8BB6A6}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.013948436797121"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.673510233918129"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.344725652271705"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>SCIEnrg_Synth Beeps_PSE_OS_v7wuJ.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="33650004"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="SCIEnrg_Synth Beeps_PSE_OS_v7wuJ" ID="{FA7D73C5-BBDD-4553-A07A-3DBA6E8BB6A6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(2)" ID="{08111D5F-E949-4628-AC38-120398B9562A}" ShortID="112431522">
 											<PropertyList>
-												<Property Name="ChannelConfigOverride" Type="int64" Value="49410"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-150</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Fireballs - Fire Ball 03.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="633906341"/>
-											</MediaIDList>
-										</AudioFileSource>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A971F479-8310-4713-A8A7-A8ECEE05E9A4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(2)" ID="{332CB09F-4764-4282-B53E-87BE838073FD}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0153433423301844"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.58025730994152"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.199463450292397"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(2).wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="252463775"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(2)" ID="{332CB09F-4764-4282-B53E-87BE838073FD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(3)" ID="{AB05D9EC-C914-4357-8DA1-A7DD3061FB44}" ShortID="293970975">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A971F479-8310-4713-A8A7-A8ECEE05E9A4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8D5F2E26-D065-4366-9EF8-C68562D95156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(3)" ID="{FDA6C30D-32EC-4DB0-BD17-EA9C1BA28C8D}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0274980881691408"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.32997705802969"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.208029014844804"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.755599640125956"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(3).wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="283673616"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="SCIEnrg_Synth Beeps_PSE_OS_v7wuJ(3)" ID="{FDA6C30D-32EC-4DB0-BD17-EA9C1BA28C8D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Fireballs - Fire Ball 03" ID="{355F6C4F-8F1A-4CD9-9943-900A2FD85551}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
+								</RandomSequenceContainer>
 							</ChildrenList>
-						</RandomSequenceContainer>
+						</Folder>
+						<Folder Name="NPCs" ID="{DF4C3531-CABF-4117-ABFE-0BA0E9C87A35}" ShortID="769828469"/>
 					</ChildrenList>
 				</ActorMixer>
 				<ActorMixer Name="Ambience" ID="{86AB6354-6DE9-4156-B2AE-DE8CC25F66F1}" ShortID="796772607">

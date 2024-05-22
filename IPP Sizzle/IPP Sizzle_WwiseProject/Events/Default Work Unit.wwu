@@ -4,6 +4,7 @@
 		<WorkUnit Name="Default Work Unit" ID="{4D9D598C-F21D-4CA7-A822-26B84DFB2EE7}" PersistMode="Standalone">
 			<ChildrenList>
 				<WorkUnit Name="SFX" ID="{AB0F3D78-B2D5-44EC-8F9D-BA43F0B99694}" PersistMode="Reference"/>
+				<WorkUnit Name="Music" ID="{1F9C0CCA-918E-4B04-AEDE-BA5C8C802E3C}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
