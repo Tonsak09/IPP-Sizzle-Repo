@@ -84,6 +84,15 @@ public class SizzleController : MonoBehaviour
 
     private bool isAirborne; 
 
+    private MovementLocks movementLocks;
+
+    public bool IsAirborne { get { return isAirborne; } }
+
+    private void Awake()
+    {
+        movementLocks = new MovementLocks(true, true);
+    }
+
     void Start()
     {
         isTurning = false;
@@ -114,11 +123,11 @@ public class SizzleController : MonoBehaviour
 
         SparkLogic();
         ProcessUserInput();
+
     }
 
     private void ProcessUserInput()
     {
-
         DashLogic();
 
         // Can't do anything else until dash is finished 
@@ -190,6 +199,10 @@ public class SizzleController : MonoBehaviour
     /// <param name="nextPos">Next desired position</param>
     private bool TryMove(Vector3 dir, Vector3 nextPos, bool ignoreGround = false)
     {
+        // Maintain lock
+        if (!movementLocks.CanTranslate)
+            return false;
+
         bool hasGround = ignoreGround ? true : Physics.CheckCapsule(this.transform.position + dir * groundOriginCheckDistance, this.transform.position + dir * groundTargetCheckDistance, groundCheckRadius, ground);
 
         bool noUnpassable = 
@@ -218,6 +231,11 @@ public class SizzleController : MonoBehaviour
 
     private void OrientationLogic(int currForw, int currSide)
     {
+        // Maintain lock but not during an animation 
+        if (!isTurning && movementLocks.CanRotate == false)
+            return;
+
+
         // Compare to previous input to see if there needs
         // to be rotation
 
@@ -474,6 +492,28 @@ public class SizzleController : MonoBehaviour
             AkSoundEngine.PostEvent("Play_Sparks", this.gameObject);
         }
     }
+
+    #endregion
+
+    #region OutsideManipulators
+
+    public void SetMovementLocks(MovementLocks locks)
+    {
+        movementLocks = locks;
+    }
+
+    public struct MovementLocks
+    {
+        public bool CanTranslate;
+        public bool CanRotate;
+
+        public MovementLocks(bool canTrans, bool canRot)
+        {
+            CanTranslate = canTrans;
+            CanRotate = canRot;
+        }
+    }
+
 
     #endregion
 

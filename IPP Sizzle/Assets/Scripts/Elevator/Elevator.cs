@@ -11,8 +11,8 @@ public class Elevator : MonoBehaviour
     [Header("Animation")]
     [SerializeField] Transform platform;
     [SerializeField] float animSpeed;
-    [SerializeField] Vector3 topPos;
-    [SerializeField] Vector3 bottomPos;
+    [SerializeField] float topOffset;
+    [SerializeField] float bottomOffset;
     [SerializeField] ElevatorState state;
 
     [Header("Checks")]
@@ -23,10 +23,19 @@ public class Elevator : MonoBehaviour
 
 
     private Transform sizzle;
+    private SizzleController sizzleController;
+    private Vector3 sizzleOffset; // Offset from platform center at start of animation 
+
+    // If sizzle is being moved or elevator is being corrected
+    private bool isBeckoned; 
+
+    private Vector3 topPos { get { return new Vector3(platform.position.x, this.transform.position.y + topOffset, platform.position.z); } }
+    private Vector3 bottomPos { get { return new Vector3(platform.position.x, this.transform.position.y + bottomOffset, platform.position.z); } }
 
     private void Awake()
     {
         sizzle = GameObject.FindGameObjectWithTag("Sizzle").transform;
+        sizzleController = sizzle.GetComponent<SizzleController>();
 
         if (!sizzle)
             Debug.LogWarning("Sizzle not found in scene");
@@ -71,11 +80,20 @@ public class Elevator : MonoBehaviour
         // player is in correct area 
         if(batterySame.IsUnlocked())
         {
-            // Brings Sizzle to next location
-            if(Vector3.Distance(sizzle.position, this.transform.position + checkOrigin) <= checkSizzleRadius)
+            // Brings Sizzle to next locationIsAirborne
+            if(Vector3.Distance(sizzle.position, checkOrigin) <= checkSizzleRadius && !sizzleController.IsAirborne)
             {
+                // Reset batteries 
                 batteryOpposite.ResetChargeable();
                 batterySame.ResetChargeable();
+
+                // Lock Sizzle position 
+                print("Locking Sizzle controller");
+                sizzleController.SetMovementLocks(new SizzleController.MovementLocks(false, true));
+
+                sizzleOffset = sizzle.position - platform.position;
+                isBeckoned = false;
+
                 state = nextMoveState;
             }
         }
@@ -84,6 +102,9 @@ public class Elevator : MonoBehaviour
             // Beckons platform to correct position 
             batteryOpposite.ResetChargeable();
             batterySame.ResetChargeable();
+
+            isBeckoned = true;
+
             state = nextMoveState;
         }
     }
@@ -101,6 +122,9 @@ public class Elevator : MonoBehaviour
         Vector3 next = platform.position + dir * animSpeed * Time.deltaTime;
 
         platform.transform.position = next;
+
+        if(!isBeckoned)
+            sizzle.position = next + sizzleOffset;
 
         bool reachedTarget = false;
         switch (state)
@@ -121,14 +145,20 @@ public class Elevator : MonoBehaviour
             // Finish animation 
             platform.position = target;
 
+            batteryToDown.ResetChargeable();
+            batteryToUp.ResetChargeable();
+
+            print("Unlocking Sizzle controller");
+            sizzle.GetComponent<SizzleController>().SetMovementLocks(new SizzleController.MovementLocks(true, true));
+
             switch (state)
             {
                 case ElevatorState.MOVE_TO_BOTTOM:
-                    platform.position = this.transform.position + bottomPos;
+                    platform.position = bottomPos;
                     state = ElevatorState.IDLE_BOTTOM;
                     break;
                 case ElevatorState.MOVE_TO_TOP:
-                    platform.position = this.transform.position + topPos;
+                    platform.position = topPos;
                     state = ElevatorState.IDLE_TOP;
                     break;
             }
@@ -169,9 +199,9 @@ public class Elevator : MonoBehaviour
     {
         if(showGizmos)
         {
-            Gizmos.DrawWireSphere(this.transform.position + topPos, checkSizzleRadius);
-            Gizmos.DrawSphere(this.transform.position + topPos, 0.05f);
-            Gizmos.DrawWireSphere(this.transform.position + bottomPos, checkSizzleRadius);
+            Gizmos.DrawWireSphere( topPos, checkSizzleRadius);
+            Gizmos.DrawSphere(topPos, 0.05f);
+            Gizmos.DrawWireSphere(bottomPos, checkSizzleRadius);
             Gizmos.DrawSphere(this.transform.position + bottomPos, 0.05f);
         }
     }

@@ -9,6 +9,12 @@ public class ElevatorBattery : Chargeable
     private List<Transform> currentChargeSources;
     private List<Transform> ignoreChargeSources;
 
+    private void Awake()
+    {
+        currentChargeSources = new List<Transform>();
+        ignoreChargeSources = new List<Transform>();
+    }
+
     void Update()
     {
         UnlockManagement();

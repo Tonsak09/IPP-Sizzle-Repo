@@ -384,12 +384,12 @@ PrefabInstance:
     - target: {fileID: 8302729721463085967, guid: 596ba831528c59a4e95ca112bff6f571,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.30389574
+      value: -0.30389577
       objectReference: {fileID: 0}
     - target: {fileID: 8302729721463085967, guid: 596ba831528c59a4e95ca112bff6f571,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.094692454
+      value: -0.09469249
       objectReference: {fileID: 0}
     - target: {fileID: 8302729721463085967, guid: 596ba831528c59a4e95ca112bff6f571,
         type: 3}
@@ -399,7 +399,7 @@ PrefabInstance:
     - target: {fileID: 8302729721463085967, guid: 596ba831528c59a4e95ca112bff6f571,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.282015
+      value: -0.28201497
       objectReference: {fileID: 0}
     - target: {fileID: 8302729721463085967, guid: 596ba831528c59a4e95ca112bff6f571,
         type: 3}
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 425525211}
   - component: {fileID: 425525210}
   - component: {fileID: 425525209}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,8 +496,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425525207}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.97, z: 0}
-  m_LocalScale: {x: 1, y: 0.25, z: 1}
+  m_LocalPosition: {x: 0, y: 2.706, z: 0.433}
+  m_LocalScale: {x: 2, y: 0.548225, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 715960448}
@@ -854,10 +854,10 @@ MonoBehaviour:
   batteryToUp: {fileID: 841476639}
   platform: {fileID: 425525208}
   animSpeed: 1
-  topPos: {x: 0, y: 2.97, z: 0}
-  bottomPos: {x: 0, y: 0, z: 0}
+  topOffset: 2.706
+  bottomOffset: -0.25
   state: 0
-  checkSizzleRadius: 2
+  checkSizzleRadius: 1
   showGizmos: 1
 --- !u!1 &841476634
 GameObject:
@@ -887,7 +887,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841476634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.47799993, z: 1.75}
+  m_LocalPosition: {x: -0.5, y: 0.47799993, z: 2.657}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1263,7 +1263,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068972261}
-  m_LocalRotation: {x: -0.094692454, y: 0.90506816, z: -0.282015, w: -0.30389574}
+  m_LocalRotation: {x: -0.09469249, y: 0.90506816, z: -0.28201497, w: -0.30389577}
   m_LocalPosition: {x: 0.5249996, y: 17.826, z: 16.839}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1608,7 +1608,8 @@ PrefabInstance:
       value: Sizzle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3479492883366507459, guid: 8815ee6c23ebb584da5ffb343163fe1d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8815ee6c23ebb584da5ffb343163fe1d, type: 3}
