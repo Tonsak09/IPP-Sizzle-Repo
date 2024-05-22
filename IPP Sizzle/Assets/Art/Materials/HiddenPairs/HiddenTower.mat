@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DitherCube
+  m_Name: HiddenTower
   m_Shader: {fileID: -6465566751694194690, guid: a76db5da620baf84db659010dcc8900e,
     type: 3}
   m_Parent: {fileID: 2100000, guid: 8cad2a67a9739094781e5552feafe1b3, type: 2}
@@ -26,9 +26,10 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _startInvis: 0
+    - _DitherThreshold: 6
+    - _startInvis: 1
     m_Colors:
-    - _Tint: {r: 0.50980395, g: 0.44313726, b: 0.34901962, a: 1}
+    - _Tint: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5020554275452500659
 MonoBehaviour:

@@ -3592,7 +3592,7 @@ MonoBehaviour:
   groundOriginCheckDistance: 0.79
   groundTargetCheckDistance: 0.86
   groundCheckRadius: 0.1
-  fallCheckDistance: 2
+  fallCheckDistance: 4
   SizzleFallZoneOffset: -0.18
   SizzleFallZoneRect: {x: 2.18, y: 0.13, z: 0.6}
   SizzleFallFixRect: {x: 1.44, y: 0.13, z: 0.6}
