@@ -96,6 +96,88 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8584853770443376066
     List: []
+  - PhysicalPath: Events\Music.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+    - ElementName: Music
+      ObjectType: 12
+      guid: ca0c9c1f8e91044baedeba5c8c802e3c
+    ParentPath: Events\Default Work Unit\Music
+    guid: ca0c9c1f8e91044baedeba5c8c802e3c
+    GuidInternal: 
+    m_lastTime: -8584859582265608116
+    List:
+    - name: Basics
+      guid: eb74f28af8ae774d9aa8dc26227d9e04
+      id: 2032813828
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: Music
+        ObjectType: 12
+        guid: ca0c9c1f8e91044baedeba5c8c802e3c
+      - ElementName: Basics
+        ObjectType: 4
+        guid: eb74f28af8ae774d9aa8dc26227d9e04
+      Path: Events\Default Work Unit\Music\Basics
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Music
+      guid: 730636adfe7ee8429f84ba1de44c622d
+      id: 2932040671
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: Music
+        ObjectType: 12
+        guid: ca0c9c1f8e91044baedeba5c8c802e3c
+      - ElementName: Basics
+        ObjectType: 4
+        guid: eb74f28af8ae774d9aa8dc26227d9e04
+      - ElementName: Play_Music
+        ObjectType: 3
+        guid: 730636adfe7ee8429f84ba1de44c622d
+      Path: Events\Default Work Unit\Music\Basics\Play_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Music
+      guid: 376cd7d0d076fc4183d44a9414a40c22
+      id: 2837384057
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8c599d4d1df2a74ca82226b84dfb2ee7
+      - ElementName: Music
+        ObjectType: 12
+        guid: ca0c9c1f8e91044baedeba5c8c802e3c
+      - ElementName: Basics
+        ObjectType: 4
+        guid: eb74f28af8ae774d9aa8dc26227d9e04
+      - ElementName: Stop_Music
+        ObjectType: 3
+        guid: 376cd7d0d076fc4183d44a9414a40c22
+      Path: Events\Default Work Unit\Music\Basics\Stop_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   - PhysicalPath: Events\SFX.wwu
     PathAndIcons:
     - ElementName: Events
@@ -133,8 +215,8 @@ MonoBehaviour:
         guid: 00f8c20c50d939469ae3cb21790c976c
       Path: Events\Default Work Unit\SFX\Sparks\Play_Sparks
       maxAttenuation: 0
-      maxDuration: 1.1705668
-      minDuration: 0.9543475
+      maxDuration: 1.2401724
+      minDuration: 0.71495277
     - name: Sparks
       guid: e8e1f35c8383ad4ba23d5deb98627e93
       id: 2439012415
