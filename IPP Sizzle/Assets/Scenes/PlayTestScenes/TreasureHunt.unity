@@ -1341,7 +1341,7 @@ PrefabInstance:
     - target: {fileID: 8167315382184886807, guid: 8815ee6c23ebb584da5ffb343163fe1d,
         type: 3}
       propertyPath: gizmosDisplay
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -2402,6 +2402,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Elevator
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822022356420858489, guid: 39fcebfe34509d249b4578d782ba06db,
+        type: 3}
+      propertyPath: checkSizzleRadius
+      value: 0.43
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -126,7 +126,7 @@ public class SizzleController : MonoBehaviour
 
         UpdateIsAirborne();
 
-        if (isAirborne)
+        if (isAirborne && isDashing == false)
         {
             StartCoroutine(FallCo());
         }
