@@ -490,12 +490,12 @@ PrefabInstance:
     - target: {fileID: 8302729721463085967, guid: 596ba831528c59a4e95ca112bff6f571,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.30389574
+      value: -0.30389577
       objectReference: {fileID: 0}
     - target: {fileID: 8302729721463085967, guid: 596ba831528c59a4e95ca112bff6f571,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.094692454
+      value: -0.09469249
       objectReference: {fileID: 0}
     - target: {fileID: 8302729721463085967, guid: 596ba831528c59a4e95ca112bff6f571,
         type: 3}
@@ -505,7 +505,7 @@ PrefabInstance:
     - target: {fileID: 8302729721463085967, guid: 596ba831528c59a4e95ca112bff6f571,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.282015
+      value: -0.28201497
       objectReference: {fileID: 0}
     - target: {fileID: 8302729721463085967, guid: 596ba831528c59a4e95ca112bff6f571,
         type: 3}
@@ -994,7 +994,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068972261}
-  m_LocalRotation: {x: -0.094692454, y: 0.90506816, z: -0.282015, w: -0.30389574}
+  m_LocalRotation: {x: -0.09469249, y: 0.90506816, z: -0.28201497, w: -0.30389577}
   m_LocalPosition: {x: 0.5249996, y: 17.826, z: 16.839}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2025,7 +2025,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2111186921}
   - component: {fileID: 2111186920}
-  - component: {fileID: 2111186922}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -2074,32 +2073,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2111186922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111186919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 336389291f0bd2748b26b8f956c24f39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: ae8d9d44
-  useOtherObject: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 2768d7e08e7809945b11d31ad490964c,
-      type: 2}
-  decodeBank: 0
-  overrideLoadSetting: 0
-  loadAsynchronous: 0
-  saveDecodedBank: 0
-  unloadTriggerList: 958ca0ea
-  bankNameInternal: 
-  valueGuidInternal: 
 --- !u!1 &2113310371
 GameObject:
   m_ObjectHideFlags: 0

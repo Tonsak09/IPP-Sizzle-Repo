@@ -3475,6 +3475,7 @@ GameObject:
   - component: {fileID: -797799067608106939}
   - component: {fileID: -5502268235489281960}
   - component: {fileID: 7041332948806736645}
+  - component: {fileID: 6971809802961246328}
   m_Layer: 0
   m_Name: Sizzle
   m_TagString: Sizzle
@@ -3683,6 +3684,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6971809802961246328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5343264826101589963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 336389291f0bd2748b26b8f956c24f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: ae8d9d44
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 2768d7e08e7809945b11d31ad490964c,
+      type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1 &5458716578628412006
 GameObject:
   m_ObjectHideFlags: 0
